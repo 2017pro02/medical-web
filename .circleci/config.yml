@@ -26,16 +26,16 @@ jobs:
 
       # Database setup
       - run:
-        name: Generate database.yml
-        command: |
-          mkdir -p config
-          echo 'test:
-            database: circle_ruby_test
-            adapter: sqlite3
-            pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-            timeout: 5000
-            username: ubuntu
-            host: localhost' > config/database.yml
+          name: Generate database.yml
+          command: |
+            mkdir -p config
+            echo 'test:
+              database: circle_ruby_test
+              adapter: sqlite3
+              pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+              timeout: 5000
+              username: ubuntu
+              host: localhost' > config/database.yml
 
 
       - run: bundle exec rake db:create
