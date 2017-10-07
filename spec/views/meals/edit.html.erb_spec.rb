@@ -1,9 +1,11 @@
 require "rails_helper"
 
 RSpec.describe "meals/edit", type: :view do
+  let(:user) { FactoryGirl.build(:user) }
+
   before do
     @meal = assign(:meal, Meal.create!(
-                            user: nil,
+                            user: user,
                             img: "MyString",
     ))
   end
