@@ -12,13 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :meal_user_id %>
-  </div>
-
-  <div class="field">
     <%= form.label :img %>
-    <%= form.text_field :img, id: :meal_img %>
+    <%= form.file_field :img, accept: "image/jpg,image/jpeg,image/png" %>
   </div>
 
   <div class="actions">

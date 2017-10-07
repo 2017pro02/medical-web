@@ -11,4 +11,5 @@
 
 class Meal < ApplicationRecord
   belongs_to :user
+  mount_uploader :img, AvatarUploader
 end
