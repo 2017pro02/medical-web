@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "user_profile/edit"
   match "user_profile/update", via: [:post, :patch]
 
+  resources :meals
+
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   devise_for :users
 
