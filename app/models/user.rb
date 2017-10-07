@@ -27,7 +27,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :profile, class_name: "UserProfile"
+  has_one :profile, class_name: "UserProfile", dependent: :destroy
   has_many :active_relations,  class_name:  "Relation",
                                foreign_key: "follower_id",
                                dependent:   :destroy
