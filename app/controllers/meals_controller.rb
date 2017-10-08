@@ -5,7 +5,7 @@ class MealsController < ApplicationController
   # GET /meals
   # GET /meals.json
   def index
-    @meals = current_user.feed
+    @meals = current_user&.feed
   end
 
   # GET /meals/1
