@@ -19,6 +19,7 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  is_admin               :boolean          default(FALSE)
 #
 
 class User < ApplicationRecord
@@ -27,7 +28,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :profile, class_name: "UserProfile"
+  has_one :profile, class_name: "UserProfile", dependent: :destroy
+  has_many :active_relations,  class_name:  "Relation",
+                               foreign_key: "follower_id",
+                               dependent:   :destroy
+  has_many :passive_relations, class_name: "Relation",
+                               foreign_key: "followed_id",
+                               dependent: :destroy
+  has_many :following, through: :active_relations,  source: :followed
+  has_many :followers, through: :passive_relations, source: :follower
 
   validates :email, format: {
     with: /\A[^@\s]+@346\.pro\z/,
@@ -38,6 +47,23 @@ class User < ApplicationRecord
 
   def email_localname
     self.email[/^(\w+)@/, 1]
+  end
+
+  def follow(other_user)
+    active_relations.create(followed_id: other_user.id)
+  end
+
+  def unfollow(other_user)
+    active_relations.find_by(followed_id: other_user.id).destroy
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
+  end
+
+  def feed
+    following_ids = "SELECT followed_id FROM relations WHERE follower_id = :user_id"
+    Meal.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
   end
 
   private

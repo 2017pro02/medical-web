@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   get "user_profile/edit"
   match "user_profile/update", via: [:post, :patch]
 
+  resources :meals do
+    post "comment", on: :member
+  end
+
+  mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   devise_for :users
 
   if Rails.env.development?
