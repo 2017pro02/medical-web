@@ -12,3 +12,22 @@
 
 <%= link_to 'Edit', edit_meal_path(@meal) %> |
 <%= link_to 'Back', meals_path %>
+
+<%= form_with(model: @comment, local: true, url: comment_meal_path(@meal.id)) do |form| %>
+  <div class="field">
+    <%= form.label :message %>
+    <%= form.text_area :message, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<% @meal.comment.each do |comment| %>
+  <div>
+    <%= link_to comment.user.profile.nickname, user_profile_show_path(comment.user.profile.username) %>
+    - <small><%= comment.created_at %></small>
+    <p><%= simple_format h comment.message %><p>
+  </div>
+<% end %>

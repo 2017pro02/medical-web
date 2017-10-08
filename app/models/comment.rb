@@ -1,16 +1,18 @@
 # == Schema Information
 #
-# Table name: meals
+# Table name: comments
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
-#  img        :string
+#  meal_id    :integer
+#  message    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Meal < ApplicationRecord
+class Comment < ApplicationRecord
   belongs_to :user
-  has_many :comment, dependent: :destroy
-  mount_uploader :img, AvatarUploader
+  belongs_to :meal
+
+  validates :message, presence: true
 end
