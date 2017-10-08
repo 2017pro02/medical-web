@@ -3,6 +3,7 @@ require "sidekiq/web"
 Rails.application.routes.draw do
   root "pages#index"
   get "dashboard", to: "pages#dashboard"
+  get "tv", to: "pages#tv"
 
   resources :users, only: [:show, :edit, :update], path: "/", param: :name, constraints: { name: /@\w+/ } do
     resources :meals, param: :date, constraints: { date: %r{\d{4}\/\d{2}\/\d{2}} } do
