@@ -1,6 +1,6 @@
 class MealsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_meal, only: [:show, :edit, :update, :destroy]
+  before_action :set_meal, only: [:show, :edit, :update, :destroy, :comment]
 
   # GET /meals
   # GET /meals.json
@@ -11,6 +11,7 @@ class MealsController < ApplicationController
   # GET /meals/1
   # GET /meals/1.json
   def show
+    @comment = Comment.new
   end
 
   # GET /meals/new
@@ -63,6 +64,22 @@ class MealsController < ApplicationController
     end
   end
 
+  def comment
+    @comment = Comment.new(comment_params)
+    @comment.user = current_user
+    @comment.meal = @meal
+
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to @meal, notice: "Meal was successfully created." }
+        format.json { render :show, status: :created, location: @comment }
+      else
+        format.html { redirect_to @meal }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
     # Use callbacks to share common setup or constraints between actions.
@@ -73,5 +90,9 @@ class MealsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def meal_params
       params.require(:meal).permit(:img)
+    end
+
+    def comment_params
+      params.require(:comment).permit(:message)
     end
 end

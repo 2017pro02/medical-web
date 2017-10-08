@@ -12,3 +12,14 @@
 
 <%= link_to 'Edit', edit_meal_path(@meal) %> |
 <%= link_to 'Back', meals_path %>
+
+<%= form_with(model: @comment, local: true, url: comment_meal_path(@meal.id)) do |form| %>
+  <div class="field">
+    <%= form.label :message %>
+    <%= form.text_area :message, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

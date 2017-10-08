@@ -13,4 +13,6 @@
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :meal
+
+  validates :message, presence: true
 end
