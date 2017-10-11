@@ -1,2 +1,9 @@
 <h1>Pages#dashboard</h1>
 <p>Find me in app/views/pages/dashboard.html.erb</p>
+
+<h3>管理しているユーザー</h3>
+<% current_user.following.each do |user| %>
+  <p>
+    <%= link_to user.profile.nickname, meals_path(params: { q: { user_id_eq: user.id } }) %>
+  </p>
+<% end %>

@@ -5,7 +5,8 @@ class MealsController < ApplicationController
   # GET /meals
   # GET /meals.json
   def index
-    @meals = current_user&.feed
+    @q = Meal.ransack(params[:q])
+    @meals = current_user&.feed & @q.result.includes(:user)
   end
 
   # GET /meals/1
