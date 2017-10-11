@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      relation: 関係
+    attributes:
+      relation:
+        follower: 管理者
+        followed: 管理対象

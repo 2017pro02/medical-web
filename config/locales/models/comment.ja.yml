@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      comment: コメント
+    attributes:
+      comment:
+        user: 投稿ユーザー
+        meal: 対象の食事
+        message: メッセージ
