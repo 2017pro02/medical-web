@@ -86,6 +86,7 @@ class MealsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_meal
       @meal = Meal.find(params[:id])
+      render "errors/403", status: 403, layout: false unless current_user.following?(@meal.user) || current_user == @meal.user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
