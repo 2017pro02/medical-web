@@ -42,6 +42,11 @@ gem "carrierwave", "~> 1.0"
 gem "carrierwave-i18n"
 # 検索
 gem "ransack"
+# 渋々bootstrap
+gem "bootstrap"
+gem "jquery-rails"
+# カレンダー表示
+gem "simple_calendar", "~> 2.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
