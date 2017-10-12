@@ -2,28 +2,12 @@
 
 <h1>Meals</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Img</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= month_calendar(events: @meals, attribute: :created_at) do |date, meals| %>
+  <%= date.strftime("%d") %>
 
-  <tbody>
-    <% @meals.each do |meal| %>
-      <tr>
-        <td><%= meal.user %></td>
-        <td><%= meal.img %></td>
-        <td><%= link_to 'Show', meal %></td>
-        <td><%= link_to 'Edit', edit_meal_path(meal) %></td>
-        <td><%= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Meal', new_meal_path %>
+  <% meals.each do |meal| %>
+    <div>
+      <%= link_to meal.created_at.strftime("%H:%M"), meal_path(meal) %>
+    </div>
+  <% end %>
+<% end %>

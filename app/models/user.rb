@@ -45,6 +45,10 @@ class User < ApplicationRecord
 
   after_create :create_user_profile
 
+  def to_s
+    self.profile.nickname
+  end
+
   def email_localname
     self.email[/^(\w+)@/, 1]
   end
