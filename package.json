@@ -1,5 +1,12 @@
 {
   "name": "schwul",
-  "private": true,
-  "dependencies": {}
+  "private": false,
+  "dependencies": {
+    "open-iconic": "https://github.com/iconic/open-iconic"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:2017pro02/medical-web.git",
+  "author": "i544c <leo@i544c.me>",
+  "license": "MIT"
 }
