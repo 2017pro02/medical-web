@@ -7,8 +7,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 5.1.4"
-# Use sqlite3 as the database for Active Record
-gem "sqlite3"
+# Use postgresql as the database for Active Record
+gem "pg"
 # Use Puma as the app server
 gem "puma", "~> 3.7"
 # Use SCSS for stylesheets
@@ -32,6 +32,8 @@ gem "jbuilder", "~> 2.5"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# .envでヤバい情報を管理する
+gem "dotenv-rails"
 # 管理画面
 gem "rails_admin", "~> 1.2"
 # ユーザー認証
@@ -40,6 +42,13 @@ gem "devise-i18n"
 # ファイルアップロード
 gem "carrierwave", "~> 1.0"
 gem "carrierwave-i18n"
+# 検索
+gem "ransack"
+# 渋々bootstrap
+gem "bootstrap"
+gem "jquery-rails"
+# カレンダー表示
+gem "simple_calendar", "~> 2.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

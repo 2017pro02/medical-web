@@ -26,7 +26,7 @@
 
 <% @meal.comment.each do |comment| %>
   <div>
-    <%= link_to comment.user.profile.nickname, user_profile_show_path(comment.user.profile.username) %>
+    <%= link_to comment.user, user_profile_show_path(comment.user.profile.username) %>
     - <small><%= comment.created_at %></small>
     <p><%= simple_format h comment.message %><p>
   </div>

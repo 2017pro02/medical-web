@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      meal: 食事
+    attributes:
+      meal:
+        user: 投稿ユーザー
+        img: 画像
+        comment: コメント
