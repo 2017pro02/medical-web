@@ -13,7 +13,7 @@
   "author": "i544c <leo@i544c.me>",
   "license": "MIT",
   "engines": {
-    "node": ">=6.11.4",
+    "node": ">=6.11.1",
     "npm": ">=3.10.10"
   },
   "cacheDirectories": [
