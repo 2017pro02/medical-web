@@ -59,10 +59,10 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "schwul_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "foolog_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: "appname.herokuapp.com" }
+  config.action_mailer.default_url_options = { host: "stormy-ocean-60686.herokuapp.com" }
   config.action_mailer.smtp_settings = {
     address: "smtp.sendgrid.net",
     port: "587",
