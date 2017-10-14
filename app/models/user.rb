@@ -38,10 +38,10 @@ class User < ApplicationRecord
   has_many :following, through: :active_relations,  source: :followed
   has_many :followers, through: :passive_relations, source: :follower
 
-  validates :email, format: {
-    with: /\A[^@\s]+@346\.pro\z/,
-    message: "346.proドメインで登録してください",
-  }
+  # validates :email, format: {
+  #   with: /\A[^@\s]+@346\.pro\z/,
+  #   message: "346.proドメインで登録してください",
+  # }
 
   after_create :create_user_profile
 
