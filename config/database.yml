@@ -17,6 +17,10 @@ test:
   <<: *default
   database: foolog_test
 
+heroku:
+  <<: *default
+  database: foolog_heroku
+
 production:
   <<: *default
   database: foolog_production
