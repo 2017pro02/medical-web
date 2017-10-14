@@ -47,6 +47,8 @@ gem "ransack"
 # 渋々bootstrap
 gem "bootstrap"
 gem "jquery-rails"
+# パンくず
+gem "gretel"
 # カレンダー表示
 gem "simple_calendar", "~> 2.0"
 

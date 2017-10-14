@@ -92,6 +92,8 @@ GEM
       railties (>= 3.2, < 5.2)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    gretel (3.0.9)
+      rails (>= 3.1.0)
     haml (5.0.3)
       temple (>= 0.8.0)
       tilt
@@ -309,6 +311,7 @@ DEPENDENCIES
   devise-i18n
   dotenv-rails
   factory_girl_rails (~> 4.8)
+  gretel
   jbuilder (~> 2.5)
   jquery-rails
   letter_opener_web
