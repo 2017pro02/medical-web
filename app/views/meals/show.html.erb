@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<% breadcrumb :meal, @meal %>
 
 <p>
   <strong>User:</strong>
@@ -7,7 +7,7 @@
 
 <p>
   <strong>Img:</strong>
-  <%= @meal.img %>
+  <%= image_tag @meal.img %>
 </p>
 
 <%= link_to 'Edit', edit_meal_path(@meal) %> |
