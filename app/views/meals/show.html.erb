@@ -1,19 +1,13 @@
-<% breadcrumb :meal, @meal %>
+<% breadcrumb :meal, @user, @date %>
 
-<p>
-  <strong>User:</strong>
-  <%= @meal.user %>
-</p>
+<% @meals.each do |meal| %>
+  <%= meal.created_at %>
+  <%= image_tag meal.img %>
+<% end %>
 
-<p>
-  <strong>Img:</strong>
-  <%= image_tag @meal.img %>
-</p>
+<%= link_to 'Back', user_meals_path %>
 
-<%= link_to 'Edit', edit_meal_path(@meal) %> |
-<%= link_to 'Back', meals_path %>
-
-<%= form_with(model: @comment, local: true, url: comment_meal_path(@meal.id)) do |form| %>
+<%= form_with(model: @comment, local: true, url: comment_user_meal_path) do |form| %>
   <div class="field">
     <%= form.label :message %>
     <%= form.text_area :message, required: true %>
@@ -24,10 +18,12 @@
   </div>
 <% end %>
 
+<% if false %>
 <% @meal.comment.each do |comment| %>
   <div>
     <%= link_to comment.user, user_profile_show_path(comment.user.profile.username) %>
     - <small><%= comment.created_at %></small>
     <p><%= simple_format h comment.message %><p>
   </div>
+<% end %>
 <% end %>
