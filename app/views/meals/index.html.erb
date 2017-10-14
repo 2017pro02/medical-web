@@ -1,3 +1,5 @@
+<% breadcrumb :meals, @user %>
+
 <h1><%= @user&.profile&.nickname || "全員" %></h1>
 
 <%= month_calendar(events: @meals, attribute: :created_at) do |date, meals| %>
