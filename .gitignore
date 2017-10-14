@@ -25,3 +25,5 @@
 
 # CarrierWave
 /public/uploads
+
+.env
