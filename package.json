@@ -1,6 +1,9 @@
 {
   "name": "foolog",
   "private": false,
+  "scripts": {
+    "start": "echo 'Nothing to do'"
+  },
   "dependencies": {
     "open-iconic": "https://github.com/iconic/open-iconic"
   },
