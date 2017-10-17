@@ -38,6 +38,8 @@ class User < ApplicationRecord
   has_many :following, through: :active_relations,  source: :followed
   has_many :followers, through: :passive_relations, source: :follower
 
+  has_many :meal
+
   # validates :email, format: {
   #   with: /\A[^@\s]+@346\.pro\z/,
   #   message: "346.proドメインで登録してください",
@@ -47,6 +49,10 @@ class User < ApplicationRecord
 
   def to_s
     self.profile.nickname
+  end
+
+  def username
+    "@" + self.profile.username
   end
 
   def email_localname

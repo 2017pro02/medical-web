@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20171008055732) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "meal_id"
+    t.bigint "user_id"
+    t.integer "target_user"
+    t.date "target_date", null: false
     t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["meal_id"], name: "index_comments_on_meal_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -75,4 +78,5 @@ ActiveRecord::Schema.define(version: 20171008055732) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "users"
 end

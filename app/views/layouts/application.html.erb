@@ -30,7 +30,7 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <% if user_signed_in? %>
-                <%= link_to "プロフィール", user_profile_show_path(current_user.profile.username), class: "dropdown-item" %>
+                <%= link_to "プロフィール", user_path(current_user.username), class: "dropdown-item" %>
                 <%= link_to "ユーザー設定", edit_user_registration_path, class: "dropdown-item" %>
                 <%= link_to "ログアウト", :destroy_user_session, method: :delete, class: "dropdown-item" %>
               <% else %>

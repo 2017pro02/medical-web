@@ -1,5 +1,5 @@
-<%= form_for @profile, url: user_profile_update_path do |f| %>
-  <% if @profile.errors.any? %>
+<%= form_for @profile, url: user_path do |f| %>
+  <% if @user.profile.errors.any? %>
     <p><%= @profile.errors.count %>個のエラー</p>
     <ul>
       <% @profile.errors.full_messages.each do |message| %>
