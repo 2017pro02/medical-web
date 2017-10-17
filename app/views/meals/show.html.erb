@@ -7,7 +7,7 @@
 
 <%= link_to 'Back', user_meals_path %>
 
-<%= form_with(model: @comment, local: true, url: comment_user_meal_path) do |form| %>
+<%= form_with(model: @comment, local: true, url: URI.unescape(comment_user_meal_path)) do |form| %>
   <div class="field">
     <%= form.label :message %>
     <%= form.text_area :message, required: true %>
@@ -18,12 +18,10 @@
   </div>
 <% end %>
 
-<% if false %>
-<% @meal.comment.each do |comment| %>
+<% @comments.each do |comment| %>
   <div>
-    <%= link_to comment.user, user_profile_show_path(comment.user.profile.username) %>
+    <%= link_to comment.user, user_path(comment.user.username) %>
     - <small><%= comment.created_at %></small>
     <p><%= simple_format h comment.message %><p>
   </div>
-<% end %>
 <% end %>

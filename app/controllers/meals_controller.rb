@@ -2,7 +2,7 @@ class MealsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
   before_action :set_date, except: [:index, :new, :create]
-  before_action :set_meal, only: [:edit, :update, :destroy, :comment]
+  before_action :set_meal, only: [:edit, :update, :destroy]
 
   # GET /meals
   # GET /meals.json
@@ -15,6 +15,7 @@ class MealsController < ApplicationController
   def show
     @meals = Meal.where(created_at: @date.all_day)
     @comment = Comment.new
+    @comments = Comment.where(target_user: @user, target_date: @date.all_day)
   end
 
   # GET /meals/new
@@ -70,11 +71,12 @@ class MealsController < ApplicationController
   def comment
     @comment = Comment.new(comment_params)
     @comment.user = current_user
-    @comment.meal = @meal
+    @comment.target_user = @user
+    @comment.target_date = @date
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @meal, notice: "Meal was successfully created." }
+        format.html { redirect_to URI.unescape(user_meal_path(date: @date.strftime("%Y/%m/%d"))), notice: "Meal was successfully created." }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { redirect_to @meal }

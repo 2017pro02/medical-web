@@ -11,6 +11,5 @@
 
 class Meal < ApplicationRecord
   belongs_to :user
-  has_many :comment, dependent: :destroy
   mount_uploader :img, AvatarUploader
 end
