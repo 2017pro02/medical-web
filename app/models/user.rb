@@ -56,7 +56,7 @@ class User < ApplicationRecord
   end
 
   def email_localname
-    self.email[/^(\w+)@/, 1]
+    self.email[/^(.+)@/, 1]
   end
 
   def follow(other_user)
