@@ -14,6 +14,7 @@ POSTGRES_PASSWORD=password
 docker-compose up -d                # PostgreSQLを立ち上げる
 bundle install --path vendor/bundle # 依存するgemをインストールする
 bundle exec rake db:setup           # データベースをセットアップする
+bundle exec sidekiq -C config/sidekiq.yml # workerを立ち上げる
 bundle exec rails s                 # 開発用サーバを立ち上げる
 ```
 
