@@ -1,0 +1,5 @@
+<h1><%= @monitored.profile.nickname %>さんが食事を撮影しました！</h1>
+
+<%= image_tag @meal.img %>
+
+<%= link_to "コメントする？ここをクリック！", URI.unescape(user_meal_url(user_name: @monitored.username, date: @meal.created_at.strftime("%Y/%m/%d"))) %>

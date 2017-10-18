@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  authenticate :user, lambda { |u| u.is_admin? } do
+  authenticate :user, ->(u) { u.is_admin? } do
     mount RailsAdmin::Engine => "/admin", as: "rails_admin"
     mount Sidekiq::Web => "/sidekiq"
   end
