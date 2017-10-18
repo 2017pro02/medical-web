@@ -10,7 +10,7 @@ POSTGRES_PASSWORD=password
 ```
 
 以下のコマンドを実行してください。
-```
+```shell
 docker-compose up -d                # PostgreSQLを立ち上げる
 bundle install --path vendor/bundle # 依存するgemをインストールする
 bundle exec rake db:setup           # データベースをセットアップする
