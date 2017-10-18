@@ -1,3 +1,5 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   root "pages#index"
   get "dashboard", to: "pages#dashboard"
@@ -8,8 +10,12 @@ Rails.application.routes.draw do
     end
   end
 
-  mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   devise_for :users
+
+  authenticate :user, ->(u) { u.is_admin? } do
+    mount RailsAdmin::Engine => "/admin", as: "rails_admin"
+    mount Sidekiq::Web => "/sidekiq"
+  end
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

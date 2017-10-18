@@ -35,6 +35,9 @@ class MealsController < ApplicationController
 
     respond_to do |format|
       if @meal.save
+        @user.followers.each do |follower|
+          UserMailer.notify_new_meal(follower, @user, @meal).deliver_later
+        end
         format.html { redirect_to user_meals_path, notice: "Meal was successfully created." }
         format.json { render :show, status: :created, location: @meal }
       else

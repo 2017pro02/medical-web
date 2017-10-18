@@ -34,6 +34,9 @@ gem "jbuilder", "~> 2.5"
 
 # .envでヤバい情報を管理する
 gem "dotenv-rails"
+# ジョブ管理
+gem "sidekiq"
+gem "sinatra", require: false
 # 管理画面
 gem "rails_admin", "~> 1.2"
 # ユーザー認証
@@ -42,8 +45,6 @@ gem "devise-i18n"
 # ファイルアップロード
 gem "carrierwave", "~> 1.0"
 gem "carrierwave-i18n"
-# 検索
-gem "ransack"
 # 渋々bootstrap
 gem "bootstrap"
 gem "jquery-rails"
