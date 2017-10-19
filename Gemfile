@@ -42,6 +42,8 @@ gem "rails_admin", "~> 1.2"
 # ユーザー認証
 gem "devise"
 gem "devise-i18n"
+# Seed
+gem "seed-fu", "~> 2.3"
 # ファイルアップロード
 gem "carrierwave", "~> 1.0"
 gem "carrierwave-i18n"
