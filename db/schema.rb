@@ -17,11 +17,12 @@ ActiveRecord::Schema.define(version: 20171008055732) do
 
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "target_user"
+    t.bigint "target_user_id"
     t.date "target_date", null: false
     t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["target_user_id"], name: "index_comments_on_target_user_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -79,4 +80,5 @@ ActiveRecord::Schema.define(version: 20171008055732) do
   end
 
   add_foreign_key "comments", "users"
+  add_foreign_key "comments", "users", column: "target_user_id"
 end

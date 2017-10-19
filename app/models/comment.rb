@@ -13,7 +13,7 @@
 
 class Comment < ApplicationRecord
   belongs_to :user
-  belongs_to :target_user, class_name: "User", foreign_key: "user_id"
+  belongs_to :target_user, class_name: "User"
 
   validates :message, presence: true
 end
