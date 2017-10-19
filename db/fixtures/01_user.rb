@@ -3,6 +3,7 @@ User.seed(:id, {
   email: "admin@346.pro",
   password: "password",
   password_confirmation: "password",
+  is_admin: true,
 })
 
 (2..10).each do |i|
