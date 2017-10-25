@@ -1,4 +1,4 @@
-<%= form_with(model: meal, local: true) do |form| %>
+<%= form_with(model: meal, url: URI.unescape(url), local: true) do |form| %>
   <% if meal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(meal.errors.count, "error") %> prohibited this meal from being saved:</h2>

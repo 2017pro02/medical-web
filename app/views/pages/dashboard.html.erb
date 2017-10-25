@@ -4,6 +4,6 @@
 <h3>管理しているユーザー</h3>
 <% current_user.following.each do |user| %>
   <p>
-    <%= link_to user, meals_path(params: { q: { user_id_eq: user.id } }) %>
+    <%= link_to user, user_meals_path(user_name: user.username) %>
   </p>
 <% end %>

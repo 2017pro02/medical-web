@@ -1,19 +1,21 @@
 class MealsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_meal, only: [:show, :edit, :update, :destroy, :comment]
+  before_action :set_user
+  before_action :set_date, except: [:index, :new, :create]
+  before_action :set_meal, only: [:edit, :update, :destroy]
 
   # GET /meals
   # GET /meals.json
   def index
-    @q = Meal.ransack(params[:q])
-    @user = User.find_by(id: @q.user_id_eq)
-    @meals = current_user&.feed & @q.result.includes(:user)
+    @meals = @user.meal
   end
 
   # GET /meals/1
   # GET /meals/1.json
   def show
+    @meals = Meal.where(created_at: @date.all_day)
     @comment = Comment.new
+    @comments = Comment.where(target_user: @user, target_date: @date.all_day)
   end
 
   # GET /meals/new
@@ -33,7 +35,10 @@ class MealsController < ApplicationController
 
     respond_to do |format|
       if @meal.save
-        format.html { redirect_to @meal, notice: "Meal was successfully created." }
+        @user.followers.each do |follower|
+          UserMailer.notify_new_meal(follower, @user, @meal).deliver_later
+        end
+        format.html { redirect_to user_meals_path, notice: "Meal was successfully created." }
         format.json { render :show, status: :created, location: @meal }
       else
         format.html { render :new }
@@ -47,7 +52,7 @@ class MealsController < ApplicationController
   def update
     respond_to do |format|
       if @meal.update(meal_params)
-        format.html { redirect_to @meal, notice: "Meal was successfully updated." }
+        format.html { redirect_to URI.unescape(user_meal_path(date: @meal.created_at.strftime("%Y/%m/%d"))), notice: "Meal was successfully updated." }
         format.json { render :show, status: :ok, location: @meal }
       else
         format.html { render :edit }
@@ -69,11 +74,12 @@ class MealsController < ApplicationController
   def comment
     @comment = Comment.new(comment_params)
     @comment.user = current_user
-    @comment.meal = @meal
+    @comment.target_user = @user
+    @comment.target_date = @date
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @meal, notice: "Meal was successfully created." }
+        format.html { redirect_to URI.unescape(user_meal_path(date: @date.strftime("%Y/%m/%d"))), notice: "Meal was successfully created." }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { redirect_to @meal }
@@ -84,10 +90,19 @@ class MealsController < ApplicationController
 
   private
 
+    def set_user
+      @user = UserProfile.find_by!(username: params[:user_name][1..-1]).user
+      render "errors/403", status: 403, layout: false unless current_user.following?(@user) || current_user == @user
+    end
+
+    def set_date
+      year, month, day = params[:date].split("/")
+      @date = Time.zone.local(year, month, day)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_meal
       @meal = Meal.find(params[:id])
-      render "errors/403", status: 403, layout: false unless current_user.following?(@meal.user) || current_user == @meal.user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

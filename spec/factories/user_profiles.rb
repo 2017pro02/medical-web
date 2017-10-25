@@ -14,7 +14,7 @@
 
 FactoryGirl.define do
   factory :user_profile do
-    sequence(:username) { |n| "koume-#{n}" }
+    sequence(:username) { |n| "koume#{n}" }
     nickname "zombie lover"
     avatar "zombieee"
     bio "I love zombie💓"

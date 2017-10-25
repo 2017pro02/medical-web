@@ -1,5 +1,5 @@
 require "rails_helper"
 
-RSpec.describe MealsController, type: :controller do
+RSpec.describe GuessFoodJob, type: :job do
   pending "add some examples to (or delete) #{__FILE__}"
 end
