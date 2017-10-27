@@ -7,8 +7,13 @@ App.tv = App.cable.subscriptions.create "TvChannel",
 
   received: (data) ->
     # Called when there's incoming data on the websocket for this channel
-    console.info(data)
-
-  put_message: () ->
-    @perform("put_message")
-    return
+    if (comment = document.getElementById("comment")) != null
+      div = document.createElement("div")
+      fragment = document.createDocumentFragment()
+      small = document.createElement("small")
+      small.textContent = data.from
+      p = document.createElement("p")
+      p.textContent = data.message
+      fragment.appendChild(small)
+      fragment.appendChild(p)
+      comment.appendChild(fragment)
