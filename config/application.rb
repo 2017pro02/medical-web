@@ -22,6 +22,9 @@ module Foolog
     config.i18n.default_locale = :ja
     config.time_zone = "Tokyo"
     config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}").to_s]
+    config.action_view.field_error_proc = Proc.new do |html_tag, _instance|
+      html_tag.to_s
+    end
 
     # Don't generate system test files.
     config.generators.system_tests = nil

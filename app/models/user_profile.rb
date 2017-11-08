@@ -23,6 +23,11 @@ class UserProfile < ApplicationRecord
     message: "半角英数字とハイフンのみ使用できます",
   }
 
+  validates :username, uniqueness: {
+    case_sensitive: false,
+    message: "このユーザー名は既に使われています",
+  }
+
   private
 
     def set_nickname
