@@ -37,6 +37,7 @@ class MealsController < ApplicationController
       if @meal.save
         @user.followers.each do |follower|
           UserMailer.notify_new_meal(follower, @user, @meal).deliver_later
+          TvChannel.broadcast_to(@user, { type: "meal", date: @meal.created_at, img: @meal.img })
         end
         format.html { redirect_to user_meals_path, notice: "Meal was successfully created." }
         format.json { render :show, status: :created, location: @meal }
@@ -79,7 +80,7 @@ class MealsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        TvChannel.broadcast_to(@user, {from: current_user.profile.nickname, message: @comment.message})
+        TvChannel.broadcast_to(@user, { type: "comment", from: current_user.profile.nickname, message: @comment.message })
         format.html { redirect_to URI.unescape(user_meal_path(date: @date.strftime("%Y/%m/%d"))), notice: "Meal was successfully created." }
         format.json { render :show, status: :created, location: @comment }
       else

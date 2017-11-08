@@ -1,5 +1,34 @@
-<h1>Pages#tv</h1>
-<p>Find me in app/views/pages/tv.html.erb</p>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-<div id="comment">
+<div id="tv" class="container">
+  <div class="row">
+    <div id="meal" class="col-6 column-justify">
+      <div class="card">
+        <div class="card-header">一昨日</div>
+        <div class="card-body">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">昨日</div>
+        <div class="card-body">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">今日</div>
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 column-justify">
+      <div id="sugguest" style="height:45vh;">
+      </div>
+
+      <div id="comment" style="height:45vh;">
+      </div>
+    </div>
+  </div>
 </div>
