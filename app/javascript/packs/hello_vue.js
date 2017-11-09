@@ -6,13 +6,11 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import Vue from 'vue'
-import App from '../app.vue'
+import Meal from '../meal.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.body.appendChild(document.createElement('hello'))
-  const app = new Vue(App).$mount('hello')
-
-  //console.log(app)
+  document.body.appendChild(document.createElement('meal'))
+  const meal = new Vue(Meal).$mount('meal')
 })
 
 
