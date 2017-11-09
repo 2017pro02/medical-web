@@ -6,4 +6,8 @@ class PagesController < ApplicationController
 
   def dashboard
   end
+
+  def tv
+    render layout: false
+  end
 end

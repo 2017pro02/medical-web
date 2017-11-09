@@ -1,3 +1,5 @@
+<h1>プロフィール編集</h1>
+
 <%= form_for @profile, url: user_path do |f| %>
   <% if @user.profile.errors.any? %>
     <p><%= @profile.errors.count %>個のエラー</p>
@@ -8,25 +10,51 @@
     </ul>
   <% end %>
 
-  <div>
-    <%= f.label :username %>
-    <%= f.text_field :username, required: true %>
+  
+  <div class="form-group">
+    <div class="row">
+      <%= f.label :username, class: "col-sm-12 col-md-3" %>
+      <div class="col-sm-12 col-md-9">
+        <div class="input-group">
+          <span class="input-group-addon">＠</span>
+          <%= f.text_field :username, required: true, class: "form-control #{field_class(@profile, :username)}" %>
+        </div>
+        <small class="form-text text-muted">半角英数字のみ使用できます</small>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :nickname %>
-    <%= f.text_field :nickname, placeholder: @profile.user.email_localname %>
+  <div class="form-group">
+    <div class="row">
+      <%= f.label :nickname, class: "col-sm-12 col-md-3" %>
+      <div class="col-sm-12 col-md-9">
+        <div class="input-group">
+          <%= f.text_field :nickname, placeholder: @profile.user.email_localname, class: "form-control #{field_class(@profile, :nickname)}" %>
+        </div>
+        <small class="form-text text-muted">日本語も使用できます</small>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :avatar %>
-    <%= f.file_field :avatar, accept: "image/jpg,image/jpeg,image/png" %>
+  <div class="form-group">
+    <div class="row">
+      <%= f.label :avatar, class: "col-sm-12 col-md-3" %>
+      <div class="input-group col-sm-12 col-md-9">
+        <%= f.file_field :avatar, accept: "image/jpg,image/jpeg,image/png", class: "form-control-file" %>
+      </div>
+    </div>
+  </div>
+ 
+  <div class: "form-group">
+    <div class="row">
+      <%= f.label :bio, class: "col-sm-12 col-md-3" %>
+      <div class="input-group col-sm-12 col-md-9">
+        <%= f.text_area :bio, placeholder: "近況など、自由に記述できます", class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :bio %>
-    <%= f.text_area :bio %>
+  <div class="row">
+    <%= f.submit class: "btn btn-primary offset-md-3" %>
   </div>
-
-  <%= f.submit %>
 <% end %>
