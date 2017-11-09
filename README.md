@@ -9,13 +9,19 @@ POSTGRES_USER=foolog
 POSTGRES_PASSWORD=password
 ```
 
+このプロジェクトに必要なミドルウェアは以下の通り。
+* docker, docker-compose
+* anyenv[推奨] rbenv, ndenv
+  * ruby2系, gem, bundler
+  * node8系, yarn
+
 以下のコマンドを実行してください。
 ```shell
-docker-compose up -d                # PostgreSQLを立ち上げる
-bundle install --path vendor/bundle # 依存するgemをインストールする
-bundle exec rake db:setup db:seed_fu      # データベースをセットアップする
-bundle exec sidekiq -C config/sidekiq.yml # workerを立ち上げる
-bundle exec rails s                 # 開発用サーバを立ち上げる
+docker-compose up -d  #PostgreSQLを立ち上げる
+bundle install --path vendor/bundle  #依存するgemをインストールする
+bundle exec rake db:setup db:seed_fu  #データベースをセットアップする
+bundle exec rake assets:precompile  #アセットを準備
+bundle exec foreman start -p 3000  #プロセスを立ち上げる
 ```
 
 ## Contributing
