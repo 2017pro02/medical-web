@@ -32,6 +32,8 @@ gem "redis", "~> 3.0"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# プロセスマネージャー
+gem "foreman"
 # .envでヤバい情報を管理する
 gem "dotenv-rails"
 # ジョブ管理
