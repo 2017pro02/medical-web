@@ -22,12 +22,4 @@ App.tv = App.cable.subscriptions.create "TvChannel",
       
       when "meal"
         if (meal = document.getElementById("meal")) != null
-          div = document.createElement("div")
-          fragment = document.createDocumentFragment()
-          small = document.createElement("small")
-          small.textContent = data.date
-          img = document.createElement("img")
-          img.src = data.img.url
-          fragment.appendChild(small)
-          fragment.appendChild(img)
-          meal.appendChild(fragment)
+          window.componentMeal.addMeal(data.img.url)

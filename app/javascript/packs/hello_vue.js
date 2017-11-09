@@ -9,8 +9,9 @@ import Vue from 'vue'
 import Meal from '../meal.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.body.appendChild(document.createElement('meal'))
-  const meal = new Vue(Meal).$mount('meal')
+  const app = document.getElementById('app')
+  app.appendChild(document.createElement('meal'))
+  new Vue(Meal).$mount('meal')
 })
 
 

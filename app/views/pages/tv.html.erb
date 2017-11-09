@@ -1,29 +1,11 @@
 <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<%= stylesheet_pack_tag 'hello_vue' %>
 <%= javascript_pack_tag 'hello_vue' %>
 
-<div id="tv" class="container">
-  <div class="row">
-    <div id="meal" class="col-6 column-justify">
-      <div class="card">
-        <div class="card-header">一昨日</div>
-        <div class="card-body">
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">昨日</div>
-        <div class="card-body">
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">今日</div>
-        <div class="card-body">
-        </div>
-      </div>
-    </div>
-
+<div id="tv" class="container-fluid">
+  <div id="app" class="row">
+    <!--
     <div class="col-6 column-justify">
       <div id="sugguest" style="height:45vh;">
       </div>
@@ -31,5 +13,6 @@
       <div id="comment" style="height:45vh;">
       </div>
     </div>
+    -->
   </div>
 </div>
