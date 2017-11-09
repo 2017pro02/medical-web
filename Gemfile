@@ -34,6 +34,8 @@ gem "redis", "~> 3.0"
 
 # プロセスマネージャー
 gem "foreman"
+# フロントエンドを美しくしたかった
+gem "webpacker", "~> 3.0"
 # .envでヤバい情報を管理する
 gem "dotenv-rails"
 # ジョブ管理
