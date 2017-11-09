@@ -1,4 +1,5 @@
 ---
-:checks_remove: []
+:checks_remove:
+-  :jshint
 :checks_add:
 - :rubocop

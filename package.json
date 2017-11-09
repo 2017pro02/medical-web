@@ -5,6 +5,8 @@
     "start": "echo 'Nothing to do'"
   },
   "dependencies": {
+    "@rails/webpacker": "^3.0.2",
+    "coffeescript": "1.12.7",
     "open-iconic": "https://github.com/iconic/open-iconic"
   },
   "version": "1.0.0",
@@ -18,5 +20,8 @@
   },
   "cacheDirectories": [
     "node_modules"
-  ]
+  ],
+  "devDependencies": {
+    "webpack-dev-server": "^2.9.4"
+  }
 }
