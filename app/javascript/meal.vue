@@ -44,6 +44,10 @@ export default {
   methods: {
     addMeal: function(imgUrl) {
       meals[0].push({img: imgUrl})
+    },
+    dayChanged: function() {
+      meals.pop()
+      meals.unshift([])
     }
   }
 }
