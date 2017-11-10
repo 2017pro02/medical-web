@@ -35,9 +35,9 @@ class MealsController < ApplicationController
 
     respond_to do |format|
       if @meal.save
+        TvChannel.broadcast_to(current_user, { type: "meal", date: @meal.created_at, img: @meal.img })
         @user.followers.each do |follower|
-          UserMailer.notify_new_meal(follower, @user, @meal).deliver_later
-          TvChannel.broadcast_to(@user, { type: "meal", date: @meal.created_at, img: @meal.img })
+          UserMailer.notify_new_meal(follower, current_user, @meal).deliver_later
         end
         format.html { redirect_to user_meals_path, notice: "Meal was successfully created." }
         format.json { render :show, status: :created, location: @meal }
