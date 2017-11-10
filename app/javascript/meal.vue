@@ -54,6 +54,10 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  height: 30vh;
+}
+
 .card-body {
   padding: 0;
   display: flex;
