@@ -20,7 +20,7 @@ POSTGRES_PASSWORD=password
 docker-compose up -d  #PostgreSQLを立ち上げる
 bundle install --path vendor/bundle  #依存するgemをインストールする
 bundle exec rake db:setup db:seed_fu  #データベースをセットアップする
-bundle exec assets:precompile  #アセットを準備
+bundle exec rake assets:precompile  #アセットを準備
 bundle exec foreman start -p 3000  #プロセスを立ち上げる
 ```
 
