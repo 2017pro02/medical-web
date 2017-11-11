@@ -12,3 +12,11 @@ services:
     image: redis:4.0.2-alpine
     ports:
       - "6379:6379"
+
+  ruby:
+    build: ./
+    tty: true
+    volumes:
+      - ./:/mnt
+    ports:
+      - "3000:3000"
