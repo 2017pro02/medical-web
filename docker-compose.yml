@@ -18,5 +18,8 @@ services:
     tty: true
     volumes:
       - ./:/mnt
+    links:
+      - db
+      - redis
     ports:
       - "3000:3000"
