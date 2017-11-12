@@ -7,11 +7,14 @@
 
 import Vue from 'vue'
 import Meal from '../meal.vue'
+import Comment from '../comment.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.getElementById('app')
   app.appendChild(document.createElement('meal'))
   new Vue(Meal).$mount('meal')
+  app.appendChild(document.createElement('comment'))
+  new Vue(Comment).$mount('comment')
 })
 
 
