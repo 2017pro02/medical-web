@@ -2,8 +2,9 @@
   <div class="col-6 column-justify">
     <div id="sugguest" class="card">
       <div class="card-body">
-        <h4 class="card-title">オススメの料理はまだ表示されません:(</h4>
-        <h6 class="card-subtitle mb-2 text-muted">開発中です💦</h6>
+        <h4 class="card-title">オススメの料理</h4>
+        <img :src="recommend_img" class="img-thumbnail">
+        <p>{{ recommend_name }}を食べると良いでしょう</p>
       </div>
     </div>
 
@@ -28,6 +29,8 @@ export default {
   },
   data: function () {
     return {
+      recommend_img: "https://i.imgur.com/HS91twq.jpg",
+      recommend_name: "蕎麦",
       from: "",
       message: ""
     }
@@ -44,5 +47,9 @@ export default {
 <style scoped>
 #sugguest, #comment {
   height: 45vh;
+}
+
+img {
+  max-height: 30vh;
 }
 </style>
