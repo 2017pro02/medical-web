@@ -48,4 +48,8 @@ export default {
 #sugguest, #comment {
   height: 45vh;
 }
+
+img {
+  max-height: 30vh;
+}
 </style>
