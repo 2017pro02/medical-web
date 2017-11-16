@@ -3,11 +3,9 @@
 <h1><%= @user.profile.nickname %></h1>
 
 <%= month_calendar(events: @meals, attribute: :created_at) do |date, meals| %>
-  <%= date.strftime("%d") %>
-
-  <% meals.each do |meal| %>
-    <div>
-      <%= link_to meal.created_at.strftime("%H:%M"), URI.unescape(user_meal_path(date: show_date(meal.created_at))) %>
-    </div>
+  <% if meals.present? %>
+    <%= link_to date.strftime("%d"), URI.unescape(user_meal_path(date: show_date(date))) %>
+  <% else %>
+    <%= date.strftime("%d") %>
   <% end %>
 <% end %>

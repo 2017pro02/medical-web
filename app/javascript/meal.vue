@@ -35,6 +35,13 @@ var meals = [ [], [], [] ]
 export default {
   created: function() {
     window.componentMeal = this
+    fetch("/tv.json", {credentials: "include"}).then(function(res) {
+      return res.json()
+    }).then(function(json) {
+      for(let meals2 of json.two)  meals[2].push({img: meals2.img.url})
+      for(let meals1 of json.one)  meals[1].push({img: meals1.img.url})
+      for(let meals0 of json.zero) meals[0].push({img: meals0.img.url})
+    })
   },
   data: function () {
     return {
