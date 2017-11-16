@@ -100,3 +100,15 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
+
+CarrierWave.configure do |config|
+  config.fog_provider = "fog/aws"
+  config.fog_credentials = {
+    provider: "AWS",
+    aws_access_key_id: ENV["AWS_ACCESS_KEY_ID"],
+    aws_secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"],
+    region: "ap-northeast-1",
+  }
+  config.fog_directory = "foolog-test"
+  config.cache_storage = :fog
+end

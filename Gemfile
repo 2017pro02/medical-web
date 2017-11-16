@@ -51,6 +51,7 @@ gem "seed-fu", "~> 2.3"
 # ファイルアップロード
 gem "carrierwave", "~> 1.0"
 gem "carrierwave-i18n"
+gem "fog-aws"
 # 渋々bootstrap
 gem "bootstrap"
 gem "jquery-rails"
