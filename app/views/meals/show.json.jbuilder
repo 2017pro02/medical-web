@@ -1,1 +1,1 @@
-json.partial! "meals/meal", meal: @meal
+json.array! @meals, partial: "meals/meal", as: :meal

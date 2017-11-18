@@ -17,12 +17,22 @@ POSTGRES_PASSWORD=password
 
 以下のコマンドを実行してください。
 ```shell
-docker-compose up -d  #PostgreSQLを立ち上げる
+docker-compose up -d db redis  #PostgreSQLを立ち上げる
 bundle install --path vendor/bundle  #依存するgemをインストールする
 bundle exec rake db:setup db:seed_fu  #データベースをセットアップする
 bundle exec rake assets:precompile  #アセットを準備
 bundle exec foreman start -p 3000  #プロセスを立ち上げる
 ```
+
+### なんか上手くいかない場合
+webpackerでコンパイルに失敗するなど、原因不明で最悪の場合は開発環境を全てDocker下に置く。
+.envに以下を追記。
+```
+POSTGRES_HOST=db
+REDIS_URL=redis://redis
+```
+`docker-compose up -d`でrubyコンテナを使用する。
+
 
 ## Contributing
 このプロジェクトをcloneしてbundle installし、「さぁ開発するぞ」と意気込むところ申し訳ありませんが、以下のコマンドを実行しておいてください。

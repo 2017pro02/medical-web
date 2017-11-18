@@ -1,27 +1,31 @@
 <% breadcrumb :meal, @user, @date %>
 
-<% @meals.each do |meal| %>
-  <%= meal.created_at %>
-  <%= image_tag meal.img %>
-<% end %>
-
-<%= link_to 'Back', user_meals_path %>
-
-<%= form_with(model: @comment, local: true, url: URI.unescape(comment_user_meal_path)) do |form| %>
-  <div class="field">
-    <%= form.label :message %>
-    <%= form.text_area :message, required: true %>
+<div class="row">
+  <div class="col-sm-12 col-md-6">
+    <% @meals.each do |meal| %>
+      <%= meal.created_at.strftime("%H:%M") %>
+      <%= image_tag meal.img, class: "img-thumbnail" %>
+    <% end %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+  <div class="col-sm-12 col-md-6">
+    <%= form_with(model: @comment, local: true, url: URI.unescape(comment_user_meal_path)) do |form| %>
+      <div class="form-group">
+        <%= form.label :message %>
+        <%= form.text_area :message, required: true, class: "form-control" %>
+      </div>
 
-<% @comments.each do |comment| %>
-  <div>
-    <%= link_to comment.user, user_path(comment.user.username) %>
-    - <small><%= comment.created_at %></small>
-    <p><%= simple_format h comment.message %><p>
+      <div class="actions">
+        <%= form.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+    <% @comments.each do |comment| %>
+      <div>
+        <%= link_to comment.user, user_path(comment.user.username) %>
+        - <small><%= comment.created_at %></small>
+        <p><%= simple_format h comment.message %><p>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
