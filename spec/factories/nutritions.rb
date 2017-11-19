@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: nutritions
+#
+#  id                   :integer          not null, primary key
+#  name                 :string
+#  energy               :float
+#  protein              :float
+#  lipid                :float
+#  carbohydrate         :float
+#  dietary_fiber        :float
+#  saturated_fatty_acid :float
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#
+
 FactoryGirl.define do
   factory :nutrition do
     name "MyString"

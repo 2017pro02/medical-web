@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171119015726) do
+ActiveRecord::Schema.define(version: 20171119071746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20171119015726) do
     t.datetime "updated_at", null: false
     t.index ["target_user_id"], name: "index_comments_on_target_user_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "dishes", force: :cascade do |t|
+    t.bigint "meal_id", null: false
+    t.bigint "nutrition_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meal_id"], name: "index_dishes_on_meal_id"
+    t.index ["nutrition_id"], name: "index_dishes_on_nutrition_id"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -93,4 +102,6 @@ ActiveRecord::Schema.define(version: 20171119015726) do
 
   add_foreign_key "comments", "users"
   add_foreign_key "comments", "users", column: "target_user_id"
+  add_foreign_key "dishes", "meals"
+  add_foreign_key "dishes", "nutritions"
 end
