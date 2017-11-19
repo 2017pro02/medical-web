@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @nutrition.name %>
+</p>
+
+<p>
+  <strong>Energy:</strong>
+  <%= @nutrition.energy %>
+</p>
+
+<p>
+  <strong>Protein:</strong>
+  <%= @nutrition.protein %>
+</p>
+
+<p>
+  <strong>Lipid:</strong>
+  <%= @nutrition.lipid %>
+</p>
+
+<p>
+  <strong>Carbohydrate:</strong>
+  <%= @nutrition.carbohydrate %>
+</p>
+
+<p>
+  <strong>Dietary fiber:</strong>
+  <%= @nutrition.dietary_fiber %>
+</p>
+
+<p>
+  <strong>Saturated fatty acid:</strong>
+  <%= @nutrition.saturated_fatty_acid %>
+</p>
+
+<%= link_to 'Edit', edit_nutrition_path(@nutrition) %> |
+<%= link_to 'Back', nutritions_path %>

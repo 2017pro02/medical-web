@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      nutrition: 栄養素
+    attributes:
+      nutrition:
+        name: 食品名
+        energy: カロリー
+        protein: タンパク質
+        lipid: 脂質
+        carbohydrate: 炭水化物
+        dietary_fiber: 食物繊維
+        saturated_fatty_acid: 飽和脂肪酸

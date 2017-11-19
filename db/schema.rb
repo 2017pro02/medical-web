@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171008055732) do
+ActiveRecord::Schema.define(version: 20171119015726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(version: 20171008055732) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_meals_on_user_id"
+  end
+
+  create_table "nutritions", force: :cascade do |t|
+    t.string "name"
+    t.float "energy"
+    t.float "protein"
+    t.float "lipid"
+    t.float "carbohydrate"
+    t.float "dietary_fiber"
+    t.float "saturated_fatty_acid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "relations", force: :cascade do |t|

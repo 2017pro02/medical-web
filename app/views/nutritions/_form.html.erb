@@ -1,0 +1,52 @@
+<%= form_with(model: nutrition, local: true) do |form| %>
+  <% if nutrition.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(nutrition.errors.count, "error") %> prohibited this nutrition from being saved:</h2>
+
+      <ul>
+      <% nutrition.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :nutrition_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :energy %>
+    <%= form.text_field :energy, id: :nutrition_energy %>
+  </div>
+
+  <div class="field">
+    <%= form.label :protein %>
+    <%= form.text_field :protein, id: :nutrition_protein %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lipid %>
+    <%= form.text_field :lipid, id: :nutrition_lipid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :carbohydrate %>
+    <%= form.text_field :carbohydrate, id: :nutrition_carbohydrate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dietary_fiber %>
+    <%= form.text_field :dietary_fiber, id: :nutrition_dietary_fiber %>
+  </div>
+
+  <div class="field">
+    <%= form.label :saturated_fatty_acid %>
+    <%= form.text_field :saturated_fatty_acid, id: :nutrition_saturated_fatty_acid %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
