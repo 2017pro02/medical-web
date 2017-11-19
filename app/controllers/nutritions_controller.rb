@@ -1,4 +1,5 @@
 class NutritionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_nutrition, only: [:show, :edit, :update, :destroy]
 
   # GET /nutritions
