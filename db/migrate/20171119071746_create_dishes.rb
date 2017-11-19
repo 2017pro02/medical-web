@@ -6,5 +6,7 @@ class CreateDishes < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+
+    add_index :dishes, [:meal_id, :nutrition_id], unique: true
   end
 end

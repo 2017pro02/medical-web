@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20171119071746) do
     t.bigint "nutrition_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["meal_id", "nutrition_id"], name: "index_dishes_on_meal_id_and_nutrition_id", unique: true
     t.index ["meal_id"], name: "index_dishes_on_meal_id"
     t.index ["nutrition_id"], name: "index_dishes_on_nutrition_id"
   end
