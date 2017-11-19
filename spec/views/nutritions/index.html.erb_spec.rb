@@ -26,12 +26,6 @@ RSpec.describe "nutritions/index", type: :view do
 
   it "renders a list of nutritions" do
     render
-    assert_select "tr>td", text: "Name".to_s, count: 2
-    assert_select "tr>td", text: 2.5.to_s, count: 2
-    assert_select "tr>td", text: 3.5.to_s, count: 2
-    assert_select "tr>td", text: 4.5.to_s, count: 2
-    assert_select "tr>td", text: 5.5.to_s, count: 2
-    assert_select "tr>td", text: 6.5.to_s, count: 2
-    assert_select "tr>td", text: 7.5.to_s, count: 2
+    assert_select "div>h4", text: "Name".to_s, count: 2
   end
 end
