@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171008055732) do
+ActiveRecord::Schema.define(version: 20171119071746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,12 +26,34 @@ ActiveRecord::Schema.define(version: 20171008055732) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "dishes", force: :cascade do |t|
+    t.bigint "meal_id", null: false
+    t.bigint "nutrition_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meal_id"], name: "index_dishes_on_meal_id"
+    t.index ["nutrition_id"], name: "index_dishes_on_nutrition_id"
+  end
+
   create_table "meals", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_meals_on_user_id"
+  end
+
+  create_table "nutritions", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "img"
+    t.float "energy"
+    t.float "protein"
+    t.float "lipid"
+    t.float "carbohydrate"
+    t.float "dietary_fiber"
+    t.float "saturated_fatty_acid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "relations", force: :cascade do |t|
@@ -45,7 +67,7 @@ ActiveRecord::Schema.define(version: 20171008055732) do
   end
 
   create_table "user_profiles", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "username", null: false
     t.string "nickname"
     t.string "avatar"
@@ -81,4 +103,8 @@ ActiveRecord::Schema.define(version: 20171008055732) do
 
   add_foreign_key "comments", "users"
   add_foreign_key "comments", "users", column: "target_user_id"
+  add_foreign_key "dishes", "meals"
+  add_foreign_key "dishes", "nutritions"
+  add_foreign_key "meals", "users"
+  add_foreign_key "user_profiles", "users"
 end

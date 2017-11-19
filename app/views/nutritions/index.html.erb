@@ -1,0 +1,21 @@
+<% breadcrumb :nutritions %>
+
+<h1>
+  <%=t "activerecord.models.nutrition" %>
+  <%= link_to "追加", new_nutrition_path, class: "btn btn-primary" %>
+</h1>
+
+<div class="row">
+  <% @nutritions.each do |nutrition| %>
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="card">
+        <%= link_to nutrition do %>
+          <%= image_tag nutrition.img.url || "", class: "card-img-top" %>
+        <% end %>
+        <div class="card-body">
+          <h4 class="card-title"><%= nutrition.name %></h4>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

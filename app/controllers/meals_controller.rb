@@ -53,7 +53,7 @@ class MealsController < ApplicationController
   def update
     respond_to do |format|
       if @meal.update(meal_params)
-        format.html { redirect_to URI.unescape(user_meal_path(date: @meal.created_at.strftime("%Y/%m/%d"))), notice: "Meal was successfully updated." }
+        format.html { redirect_to CGI.unescape(user_meal_path(date: @meal.created_at.strftime("%Y/%m/%d"))), notice: "Meal was successfully updated." }
         format.json { render :show, status: :ok, location: @meal }
       else
         format.html { render :edit }
@@ -81,7 +81,7 @@ class MealsController < ApplicationController
     respond_to do |format|
       if @comment.save
         TvChannel.broadcast_to(@user, { type: "comment", from: current_user.profile.nickname, message: @comment.message })
-        format.html { redirect_to URI.unescape(user_meal_path(date: @date.strftime("%Y/%m/%d"))), notice: "Meal was successfully created." }
+        format.html { redirect_to CGI.unescape(user_meal_path(date: @date.strftime("%Y/%m/%d"))), notice: "Meal was successfully created." }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { redirect_to @meal }
