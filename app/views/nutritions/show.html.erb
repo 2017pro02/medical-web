@@ -1,39 +1,37 @@
 <% breadcrumb :nutrition, @nutrition %>
 
+<h3><%= @nutrition.name %></h3>
+
+<%= image_tag @nutrition.img.url || "", class: "img-thumbnail" %>
+
 <p>
-  <strong>Name:</strong>
-  <%= @nutrition.name %>
+  <strong><%=t "activerecord.attributes.nutrition.energy" %>:</strong>
+  <%= @nutrition.energy %>kcal
 </p>
 
 <p>
-  <strong>Energy:</strong>
-  <%= @nutrition.energy %>
+  <strong><%=t "activerecord.attributes.nutrition.protein" %>:</strong>
+  <%= @nutrition.protein %>g
 </p>
 
 <p>
-  <strong>Protein:</strong>
-  <%= @nutrition.protein %>
+  <strong><%=t "activerecord.attributes.nutrition.lipid" %>:</strong>
+  <%= @nutrition.lipid %>g
 </p>
 
 <p>
-  <strong>Lipid:</strong>
-  <%= @nutrition.lipid %>
+  <strong><%=t "activerecord.attributes.nutrition.carbohydrate" %>:</strong>
+  <%= @nutrition.carbohydrate %>g
 </p>
 
 <p>
-  <strong>Carbohydrate:</strong>
-  <%= @nutrition.carbohydrate %>
+  <strong><%=t "activerecord.attributes.nutrition.dietary_fiber" %>:</strong>
+  <%= @nutrition.dietary_fiber %>g
 </p>
 
 <p>
-  <strong>Dietary fiber:</strong>
-  <%= @nutrition.dietary_fiber %>
+  <strong><%=t "activerecord.attributes.nutrition.saturated_fatty_acid" %>:</strong>
+  <%= @nutrition.saturated_fatty_acid %>g
 </p>
 
-<p>
-  <strong>Saturated fatty acid:</strong>
-  <%= @nutrition.saturated_fatty_acid %>
-</p>
-
-<%= link_to 'Edit', edit_nutrition_path(@nutrition) %> |
-<%= link_to 'Back', nutritions_path %>
+<%= link_to "編集", edit_nutrition_path(@nutrition), class: "btn btn-secondary" %>

@@ -18,7 +18,7 @@ crumb :nutritions do
 end
 
 crumb :nutrition_new do
-  link "作成", new_nutrition_path
+  link "追加", new_nutrition_path
   parent :nutritions
 end
 
