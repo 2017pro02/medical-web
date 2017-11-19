@@ -11,42 +11,85 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :nutrition_name %>
-  </div>
+  <div class="form-group">
+    <div class="row">
+      <%= form.label :name, class: "col-sm-12 col-md-3" %>
+      <div class="input-group col-sm-12 col-md-9">
+        <%= form.text_field :name, id: :nutrition_name, class: "form-control #{field_class(nutrition, :name)}" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :energy %>
-    <%= form.text_field :energy, id: :nutrition_energy %>
-  </div>
+    <div class="form-group">
+      <div class="row">
+        <%= form.label :img, class: "col-sm-12 col-md-3" %>
+        <div class="input-group col-sm-12 col-md-9">
+          <%= form.file_field :img, accept: "image/jpg,image/jpeg,image/png", class: "form-control-file" %>
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :protein %>
-    <%= form.text_field :protein, id: :nutrition_protein %>
-  </div>
+    <div class="form-group">
+      <div class="row">
+        <%= form.label :energy, class: "col-sm-12 col-md-3" %>
+        <div class="input-group col-sm-12 col-md-9">
+          <%= form.number_field :energy, id: :nutrition_energy, class: "form-control #{field_class(nutrition, :energy)}" %>
+          <span class="input-group-addon">kcal</span>
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :lipid %>
-    <%= form.text_field :lipid, id: :nutrition_lipid %>
-  </div>
+    <div class="form-group">
+      <div class="row">
+        <%= form.label :protein, class: "col-sm-12 col-md-3" %>
+        <div class="input-group col-sm-12 col-md-9">
+          <%= form.number_field :protein, id: :nutrition_protein, class: "form-control #{field_class(nutrition, :protein)}" %>
+          <span class="input-group-addon">g</span>
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :carbohydrate %>
-    <%= form.text_field :carbohydrate, id: :nutrition_carbohydrate %>
-  </div>
+    <div class="form-group">
+      <div class="row">
+        <%= form.label :lipid, class: "col-sm-12 col-md-3" %>
+        <div class="input-group col-sm-12 col-md-9">
+          <%= form.number_field :lipid, id: :nutrition_lipid, class: "form-control #{field_class(nutrition, :lipid)}" %>
+          <span class="input-group-addon">g</span>
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :dietary_fiber %>
-    <%= form.text_field :dietary_fiber, id: :nutrition_dietary_fiber %>
-  </div>
+    <div class="form-group">
+      <div class="row">
+        <%= form.label :carbohydrate, class: "col-sm-12 col-md-3" %>
+        <div class="input-group col-sm-12 col-md-9">
+          <%= form.number_field :carbohydrate, id: :nutrition_carbohydrate, class: "form-control #{field_class(nutrition, :carbohydrate)}" %>
+          <span class="input-group-addon">g</span>
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :saturated_fatty_acid %>
-    <%= form.text_field :saturated_fatty_acid, id: :nutrition_saturated_fatty_acid %>
-  </div>
+    <div class="form-group">
+      <div class="row">
+        <%= form.label :dietary_fiber, class: "col-sm-12 col-md-3" %>
+        <div class="input-group col-sm-12 col-md-9">
+          <%= form.number_field :dietary_fiber, id: :nutrition_dietary_fiber, class: "form-control #{field_class(nutrition, :dietary_fiber)}" %>
+          <span class="input-group-addon">g</span>
+        </div>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="form-group">
+      <div class="row">
+        <%= form.label :saturated_fatty_acid, class: "col-sm-12 col-md-3" %>
+        <div class="input-group col-sm-12 col-md-9">
+          <%= form.number_field :saturated_fatty_acid, id: :nutrition_saturated_fatty_acid, class: "form-control #{field_class(nutrition, :saturated_fatty_acid)}" %>
+          <span class="input-group-addon">g</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <%= form.submit class: "btn btn-primary offset-md-3" %>
+    </div>
   </div>
 <% end %>

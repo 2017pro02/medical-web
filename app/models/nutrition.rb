@@ -20,4 +20,14 @@ class Nutrition < ApplicationRecord
   has_many :meals, through: :dishes
 
   mount_uploader :img, AvatarUploader
+
+  validates :name, presence: true
+  validates :energy,
+            :protein,
+            :lipid,
+            :carbohydrate,
+            :dietary_fiber,
+            :saturated_fatty_acid,
+            numericality: true,
+            allow_nil: true
 end

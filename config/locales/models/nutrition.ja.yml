@@ -5,6 +5,7 @@ ja:
     attributes:
       nutrition:
         name: 食品名
+        img: 画像
         energy: カロリー
         protein: タンパク質
         lipid: 脂質
