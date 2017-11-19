@@ -3,7 +3,8 @@
 # Table name: nutritions
 #
 #  id                   :integer          not null, primary key
-#  name                 :string
+#  name                 :string           not null
+#  img                  :string
 #  energy               :float
 #  protein              :float
 #  lipid                :float
@@ -17,4 +18,6 @@
 class Nutrition < ApplicationRecord
   has_many :dishes, dependent: :delete_all
   has_many :meals, through: :dishes
+
+  mount_uploader :img, AvatarUploader
 end

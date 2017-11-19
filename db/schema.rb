@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20171119071746) do
   end
 
   create_table "meals", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,7 +44,8 @@ ActiveRecord::Schema.define(version: 20171119071746) do
   end
 
   create_table "nutritions", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
+    t.string "img"
     t.float "energy"
     t.float "protein"
     t.float "lipid"
@@ -66,7 +67,7 @@ ActiveRecord::Schema.define(version: 20171119071746) do
   end
 
   create_table "user_profiles", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "username", null: false
     t.string "nickname"
     t.string "avatar"
@@ -104,4 +105,6 @@ ActiveRecord::Schema.define(version: 20171119071746) do
   add_foreign_key "comments", "users", column: "target_user_id"
   add_foreign_key "dishes", "meals"
   add_foreign_key "dishes", "nutritions"
+  add_foreign_key "meals", "users"
+  add_foreign_key "user_profiles", "users"
 end

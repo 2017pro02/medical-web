@@ -3,7 +3,8 @@
 # Table name: nutritions
 #
 #  id                   :integer          not null, primary key
-#  name                 :string
+#  name                 :string           not null
+#  img                  :string
 #  energy               :float
 #  protein              :float
 #  lipid                :float

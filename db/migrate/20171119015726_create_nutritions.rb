@@ -1,7 +1,8 @@
 class CreateNutritions < ActiveRecord::Migration[5.1]
   def change
     create_table :nutritions do |t|
-      t.string :name
+      t.string :name, null: false
+      t.string :img
       t.float :energy
       t.float :protein
       t.float :lipid
