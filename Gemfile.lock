@@ -91,6 +91,8 @@ GEM
     factory_girl_rails (4.9.0)
       factory_girl (~> 4.9.0)
       railties (>= 3.0.0)
+    faraday (0.13.1)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
     fog-aws (1.4.1)
       fog-core (~> 1.38)
@@ -169,6 +171,7 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.10.3)
     multi_json (1.12.2)
+    multipart-post (2.0.0)
     mustermann (1.0.1)
     nested_form (0.3.2)
     nio4r (2.1.0)
@@ -353,6 +356,7 @@ DEPENDENCIES
   devise-i18n
   dotenv-rails
   factory_girl_rails (~> 4.8)
+  faraday
   fog-aws
   foreman
   gretel

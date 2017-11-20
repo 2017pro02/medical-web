@@ -7,6 +7,8 @@
 ```
 POSTGRES_USER=foolog
 POSTGRES_PASSWORD=password
+CUTOUTER_URL=http://cutouter.herokuapp.com
+CUTOUTER_KEY=cutouter
 ```
 
 このプロジェクトに必要なミドルウェアは以下の通り。

@@ -12,4 +12,6 @@
 class Dish < ApplicationRecord
   belongs_to :meal
   belongs_to :nutrition
+
+  validates :meal_id, uniqueness: { scope: :nutrition_id }
 end

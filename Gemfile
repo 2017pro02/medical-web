@@ -52,6 +52,8 @@ gem "seed-fu", "~> 2.3"
 gem "carrierwave", "~> 1.0"
 gem "carrierwave-i18n"
 gem "fog-aws"
+# httpクライアント
+gem "faraday"
 # 渋々bootstrap
 gem "bootstrap"
 gem "jquery-rails"

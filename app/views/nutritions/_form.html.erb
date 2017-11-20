@@ -32,7 +32,7 @@
       <div class="row">
         <%= form.label :energy, class: "col-sm-12 col-md-3" %>
         <div class="input-group col-sm-12 col-md-9">
-          <%= form.number_field :energy, id: :nutrition_energy, class: "form-control #{field_class(nutrition, :energy)}" %>
+          <%= form.number_field :energy, step: 0.01, id: :nutrition_energy, class: "form-control #{field_class(nutrition, :energy)}" %>
           <span class="input-group-addon">kcal</span>
         </div>
       </div>
@@ -42,7 +42,7 @@
       <div class="row">
         <%= form.label :protein, class: "col-sm-12 col-md-3" %>
         <div class="input-group col-sm-12 col-md-9">
-          <%= form.number_field :protein, id: :nutrition_protein, class: "form-control #{field_class(nutrition, :protein)}" %>
+          <%= form.number_field :protein, step: 0.01, id: :nutrition_protein, class: "form-control #{field_class(nutrition, :protein)}" %>
           <span class="input-group-addon">g</span>
         </div>
       </div>
@@ -52,7 +52,7 @@
       <div class="row">
         <%= form.label :lipid, class: "col-sm-12 col-md-3" %>
         <div class="input-group col-sm-12 col-md-9">
-          <%= form.number_field :lipid, id: :nutrition_lipid, class: "form-control #{field_class(nutrition, :lipid)}" %>
+          <%= form.number_field :lipid, step: 0.01, id: :nutrition_lipid, class: "form-control #{field_class(nutrition, :lipid)}" %>
           <span class="input-group-addon">g</span>
         </div>
       </div>
@@ -62,7 +62,7 @@
       <div class="row">
         <%= form.label :carbohydrate, class: "col-sm-12 col-md-3" %>
         <div class="input-group col-sm-12 col-md-9">
-          <%= form.number_field :carbohydrate, id: :nutrition_carbohydrate, class: "form-control #{field_class(nutrition, :carbohydrate)}" %>
+          <%= form.number_field :carbohydrate, step: 0.01, id: :nutrition_carbohydrate, class: "form-control #{field_class(nutrition, :carbohydrate)}" %>
           <span class="input-group-addon">g</span>
         </div>
       </div>
@@ -72,7 +72,7 @@
       <div class="row">
         <%= form.label :dietary_fiber, class: "col-sm-12 col-md-3" %>
         <div class="input-group col-sm-12 col-md-9">
-          <%= form.number_field :dietary_fiber, id: :nutrition_dietary_fiber, class: "form-control #{field_class(nutrition, :dietary_fiber)}" %>
+          <%= form.number_field :dietary_fiber, step: 0.01, id: :nutrition_dietary_fiber, class: "form-control #{field_class(nutrition, :dietary_fiber)}" %>
           <span class="input-group-addon">g</span>
         </div>
       </div>
@@ -82,7 +82,7 @@
       <div class="row">
         <%= form.label :saturated_fatty_acid, class: "col-sm-12 col-md-3" %>
         <div class="input-group col-sm-12 col-md-9">
-          <%= form.number_field :saturated_fatty_acid, id: :nutrition_saturated_fatty_acid, class: "form-control #{field_class(nutrition, :saturated_fatty_acid)}" %>
+          <%= form.number_field :saturated_fatty_acid, step: 0.01, id: :nutrition_saturated_fatty_acid, class: "form-control #{field_class(nutrition, :saturated_fatty_acid)}" %>
           <span class="input-group-addon">g</span>
         </div>
       </div>
