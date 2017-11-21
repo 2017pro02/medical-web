@@ -6,9 +6,7 @@ class GuessDishJob < ApplicationJob
   queue_as :default
 
   def perform(meal)
-    path = get_img_path(meal.img)
-    j = get_cutouter_res(path)
-    tmp.close if Rails.env == "heroku"
+    j = get_cutouter_json(meal.img)
 
     j.each do |jj|
       tag = jj["candidates"][0]["tag"]
@@ -19,18 +17,26 @@ class GuessDishJob < ApplicationJob
 
   private
 
-    def get_img_path(img)
-      if Rails.env == "heroku"
-        tmp = Tempfile.new([
-          File.basename(img.path),
-          File.extname(img.path),
-        ])
-        tmp.binmode
-        tmp.write img.read
-        tmp.path
-      else
-        img.path
+    def get_cutouter_json(img)
+      is_heroku = Rails.env == "heroku"
+      path = if is_heroku
+               tmp = Tempfile.new([
+                 File.basename(img.path),
+                 File.extname(img.path),
+               ])
+               tmp.binmode
+               tmp.write img.read
+               tmp.path
+             else
+               img.path
+             end
+
+      res = get_cutouter_res(path)
+      if is_heroku
+        tmp.close
+        tmp.delete
       end
+      res
     end
 
     def get_cutouter_res(path)
