@@ -1,0 +1,37 @@
+<% breadcrumb :nutrition, @nutrition %>
+
+<h3><%= @nutrition.name %></h3>
+
+<%= image_tag @nutrition.img.url || "", class: "img-thumbnail" %>
+
+<p>
+  <strong><%=t "activerecord.attributes.nutrition.energy" %>:</strong>
+  <%= @nutrition.energy %>kcal
+</p>
+
+<p>
+  <strong><%=t "activerecord.attributes.nutrition.protein" %>:</strong>
+  <%= @nutrition.protein %>g
+</p>
+
+<p>
+  <strong><%=t "activerecord.attributes.nutrition.lipid" %>:</strong>
+  <%= @nutrition.lipid %>g
+</p>
+
+<p>
+  <strong><%=t "activerecord.attributes.nutrition.carbohydrate" %>:</strong>
+  <%= @nutrition.carbohydrate %>g
+</p>
+
+<p>
+  <strong><%=t "activerecord.attributes.nutrition.dietary_fiber" %>:</strong>
+  <%= @nutrition.dietary_fiber %>g
+</p>
+
+<p>
+  <strong><%=t "activerecord.attributes.nutrition.saturated_fatty_acid" %>:</strong>
+  <%= @nutrition.saturated_fatty_acid %>g
+</p>
+
+<%= link_to "編集", edit_nutrition_path(@nutrition), class: "btn btn-secondary" %>

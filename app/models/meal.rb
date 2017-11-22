@@ -11,5 +11,8 @@
 
 class Meal < ApplicationRecord
   belongs_to :user
+  has_many :dishes, dependent: :destroy
+  has_many :nutritions, through: :dishes
+
   mount_uploader :img, AvatarUploader
 end

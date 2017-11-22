@@ -1,0 +1,95 @@
+<%= form_with(model: nutrition, local: true) do |form| %>
+  <% if nutrition.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(nutrition.errors.count, "error") %> prohibited this nutrition from being saved:</h2>
+
+      <ul>
+      <% nutrition.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="row">
+      <%= form.label :name, class: "col-sm-12 col-md-3" %>
+      <div class="input-group col-sm-12 col-md-9">
+        <%= form.text_field :name, id: :nutrition_name, class: "form-control #{field_class(nutrition, :name)}" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <%= form.label :img, class: "col-sm-12 col-md-3" %>
+        <div class="input-group col-sm-12 col-md-9">
+          <%= form.file_field :img, accept: "image/jpg,image/jpeg,image/png", class: "form-control-file" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <%= form.label :energy, class: "col-sm-12 col-md-3" %>
+        <div class="input-group col-sm-12 col-md-9">
+          <%= form.number_field :energy, step: 0.01, id: :nutrition_energy, class: "form-control #{field_class(nutrition, :energy)}" %>
+          <span class="input-group-addon">kcal</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <%= form.label :protein, class: "col-sm-12 col-md-3" %>
+        <div class="input-group col-sm-12 col-md-9">
+          <%= form.number_field :protein, step: 0.01, id: :nutrition_protein, class: "form-control #{field_class(nutrition, :protein)}" %>
+          <span class="input-group-addon">g</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <%= form.label :lipid, class: "col-sm-12 col-md-3" %>
+        <div class="input-group col-sm-12 col-md-9">
+          <%= form.number_field :lipid, step: 0.01, id: :nutrition_lipid, class: "form-control #{field_class(nutrition, :lipid)}" %>
+          <span class="input-group-addon">g</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <%= form.label :carbohydrate, class: "col-sm-12 col-md-3" %>
+        <div class="input-group col-sm-12 col-md-9">
+          <%= form.number_field :carbohydrate, step: 0.01, id: :nutrition_carbohydrate, class: "form-control #{field_class(nutrition, :carbohydrate)}" %>
+          <span class="input-group-addon">g</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <%= form.label :dietary_fiber, class: "col-sm-12 col-md-3" %>
+        <div class="input-group col-sm-12 col-md-9">
+          <%= form.number_field :dietary_fiber, step: 0.01, id: :nutrition_dietary_fiber, class: "form-control #{field_class(nutrition, :dietary_fiber)}" %>
+          <span class="input-group-addon">g</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <%= form.label :saturated_fatty_acid, class: "col-sm-12 col-md-3" %>
+        <div class="input-group col-sm-12 col-md-9">
+          <%= form.number_field :saturated_fatty_acid, step: 0.01, id: :nutrition_saturated_fatty_acid, class: "form-control #{field_class(nutrition, :saturated_fatty_acid)}" %>
+          <span class="input-group-addon">g</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <%= form.submit class: "btn btn-primary offset-md-3" %>
+    </div>
+  </div>
+<% end %>

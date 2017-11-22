@@ -4,7 +4,16 @@
   <div class="col-sm-12 col-md-6">
     <% @meals.each do |meal| %>
       <%= meal.created_at.strftime("%H:%M") %>
-      <%= image_tag meal.img, class: "img-thumbnail" %>
+      <div class="card">
+        <%= image_tag meal.img, class: "card-img-top" %>
+        <% if meal.nutritions.present? %>
+          <div class="card-body">
+            <% meal.nutritions.each do |nutrition| %>
+              <li><%= nutrition.name %></li>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 

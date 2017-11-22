@@ -22,24 +22,31 @@
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item <%= 'active' if current_page? dashboard_path %>">
               <%= link_to dashboard_path, class: "nav-link" do %>
-                Dashboard <%= "<span class='sr-only'>(current)</span>".html_safe if current_page? dashboard_path %>
+                Dashboard
+                <%= "<span class='sr-only'>(current)</span>".html_safe if current_page? dashboard_path %>
+              <% end %>
+            </li>
+            <li class="nav-item <%= 'active' if controller_name == "nutritions" %>">
+              <%= link_to nutritions_path, class: "nav-link" do %>
+                <%=t "activerecord.models.nutrition" %>
+                <%= "<span class='sr-only'>(current)</span>".html_safe if controller_name == "nutritions" %>
               <% end %>
             </li>
           </ul>
-          <div class="btn-group">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="min-width:10rem;">
-              <%= user_signed_in? ? current_user : "未ログイン" %>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <% if user_signed_in? %>
+          <% if user_signed_in? %>
+            <div class="btn-group">
+              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="min-width:10rem;">
+                <%= user_signed_in? ? current_user : "未ログイン" %>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <%= link_to "プロフィール", user_path(current_user.username), class: "dropdown-item" %>
                 <%= link_to "ユーザー設定", edit_user_registration_path, class: "dropdown-item" %>
                 <%= link_to "ログアウト", :destroy_user_session, method: :delete, class: "dropdown-item" %>
-              <% else %>
-                <%= link_to "ログイン", :new_user_session, class: "dropdown-item" %>
-              <% end %>
+              </div>
             </div>
-          </div>
+          <% else %>
+            <%= link_to "ログイン", :new_user_session, class: "btn btn-primary" %>
+          <% end %>
         </div>
       </nav>
     </header>

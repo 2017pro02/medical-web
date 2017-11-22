@@ -38,7 +38,7 @@ class User < ApplicationRecord
   has_many :following, through: :active_relations,  source: :followed
   has_many :followers, through: :passive_relations, source: :follower
 
-  has_many :meal
+  has_many :meal, dependent: :delete_all
 
   # validates :email, format: {
   #   with: /\A[^@\s]+@346\.pro\z/,
