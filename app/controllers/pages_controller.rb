@@ -8,9 +8,9 @@ class PagesController < ApplicationController
   end
 
   def tv
-    @meals2 = Meal.where(created_at: (Date.current - 2).all_day)
-    @meals1 = Meal.where(created_at: (Date.current - 1).all_day)
-    @meals0 = Meal.where(created_at: Date.current.all_day)
+    @meals2 = Meal.where(user: current_user, created_at: (Date.current - 2).all_day)
+    @meals1 = Meal.where(user: current_user, created_at: (Date.current - 1).all_day)
+    @meals0 = Meal.where(user: current_user, created_at: Date.current.all_day)
     @world = "world"
     render layout: false
   end
