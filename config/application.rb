@@ -21,6 +21,7 @@ module Foolog
     config.load_defaults 5.1
     config.i18n.default_locale = :ja
     config.time_zone = "Tokyo"
+    config.beginning_of_week = :sunday
     config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}").to_s]
     config.action_view.field_error_proc = proc do |html_tag, _instance|
       html_tag.to_s
