@@ -1,6 +1,6 @@
 <% breadcrumb :meals, @user %>
 
-<h1><%= @user.profile.nickname %></h1>
+<h1><%= @user.profile.nickname %>様の食事</h1>
 
 <%= month_calendar(events: @meals, attribute: :created_at) do |date, meals| %>
   <% if meals.present? %>

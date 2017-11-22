@@ -1,14 +1,14 @@
 <div class="simple-calendar">
   <div class="calendar-heading d-flex justify-content-between align-items-center">
     <%= link_to calendar.url_for_previous_view do %>
-      <span class="oi oi-chevron-left"></span>
+      <span class="oi oi-chevron-left" data-toggle="tooltip" data-placement="top" title="前月"></span>
     <% end %>
     <span class="calendar-title">
       <%= start_date.year %>
       <span id="month"><%= start_date.month %></span>月
     </span>
     <%= link_to calendar.url_for_next_view do %>
-      <span class="oi oi-chevron-right"></span>
+      <span class="oi oi-chevron-right" data-toggle="tooltip" data-placement="top" title="翌月"></span>
     <% end %>
   </div>
 
@@ -38,3 +38,7 @@
     </tbody>
   </table>
 </div>
+
+<script>
+  $("[data-toggle='tooltip']").tooltip();
+</script>
