@@ -12,8 +12,11 @@
   <tbody>
     <% current_user.following.each do |user| %>
       <tr>
-        <td><%= link_to user, user_meals_path(user_name: user.username) %></td>
-        <td><%= user.meals.last.created_at.to_s(:human) %></td>
+        <td class="align-middle"><%= link_to user, user_meals_path(user_name: user.username) %></td>
+        <td>
+          <%= image_tag user.meals.last&.img&.url || "" %>
+          <%= user.meals.last&.created_at&.to_s(:human) || "-----" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
