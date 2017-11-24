@@ -7,13 +7,13 @@ class MealsController < ApplicationController
   # GET /meals
   # GET /meals.json
   def index
-    @meals = @user.meal
+    @meals = @user.meals
   end
 
   # GET /meals/1
   # GET /meals/1.json
   def show
-    @meals = Meal.where(created_at: @date.all_day)
+    @meals = Meal.where(user: @user, created_at: @date.all_day)
     @comment = Comment.new
     @comments = Comment.where(target_user: @user, target_date: @date.all_day)
   end
