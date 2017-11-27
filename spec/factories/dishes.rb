@@ -9,7 +9,7 @@
 #  updated_at   :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :dish do
     meal nil
     nutrition nil
