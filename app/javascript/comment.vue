@@ -23,9 +23,11 @@
 </template>
 
 <script>
+
 export default {
   created: function() {
     window.componentComment = this
+    se_receive_message = document.getElementById("se_receive_message")
   },
   data: function () {
     return {
@@ -37,6 +39,7 @@ export default {
   },
   methods: {
     addComment: function(from, message) {
+      se_receive_message.play()
       this.from = from
       this.message = message
     }
