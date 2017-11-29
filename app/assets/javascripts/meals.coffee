@@ -3,6 +3,12 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 set_week_hash = (id) ->
+  if id == "month"
+    $("#month").addClass("active")
+    $("#week").removeClass("active")
+  else
+    $("#week").addClass("active")
+    $("#month").removeClass("active")
   for s in ["#prev", "#next"]
     href = $(s).attr("href")
     if href.indexOf("#") != -1
@@ -19,6 +25,8 @@ $(document).on 'ready turbolinks:load', ->
   if location.hash.substr(1) == "week"
     $("#month-cal, #week-cal").toggle()
     set_week_hash("week")
+  else
+    $("#month").addClass("active")
 
   $("#month, #week").click ->
     if this.id == location.hash.substr(1) then return
