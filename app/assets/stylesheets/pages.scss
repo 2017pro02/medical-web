@@ -2,6 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.right-arrow {
+  transition: all 300ms 0s ease;
+  @media (max-width: 767px) {
+    transform: rotate(90deg);
+  }
+
+  @media (min-width: 768px) {
+    transform: rotate(0deg);
+  }
+}
+
+.table {
+  img {
+    height: 4em;
+  }
+}
+
 #tv {
   height: 100vh;
 

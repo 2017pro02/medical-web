@@ -1,2 +1,48 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<div class="jumbotron">
+  <h1 class="display-3">ふーろぐ</h1>
+  <p class="lead">気軽に食習慣改善、始めませんか？</p>
+</div>
+
+<h2>ふーろぐとは？</h2>
+<p>ふーろぐは、普段の食事を写真で記録し、撮影者が見直すことで食習慣の改善を促すシステムです。</p>
+
+<h2>使い方</h2>
+
+<div class="d-sm-block d-md-flex justify-content-around align-items-center">
+  <div class="card">
+    <img class="card-img-top" src="https://via.placeholder.com/300x200">
+    <div class="card-body">
+      <p>ボックスの中に料理を置くと写真が撮影されます。</p>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <span class="right-arrow oi oi-chevron-right"></span>
+  </div>
+
+  <div class="card">
+    <img class="card-img-top" src="https://via.placeholder.com/300x200">
+    <div class="card-body">
+      <p>テレビ画面に改善案が表示されるので、食生活改善に役立てられます。</p>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <span class="right-arrow oi oi-chevron-right"></span>
+  </div>
+
+  <div class="card">
+    <img class="card-img-top" src="https://via.placeholder.com/300x200">
+    <div class="card-body">
+      <p>ご家族など許可された人だけが貴方の料理をパソコンやスマホなどで確認できます。</p>
+    </div>
+  </div>
+</div>
+
+<h2>始める！</h2>
+<div class="alert alert-warning" role="alert">このシステムでは、食事を撮影する「ボックス」が必要となります。</div>
+<div class="text-center">
+  <a href="<%= new_user_registration_path %>" class="btn btn-primary btn-lg">新規登録</a>
+  または
+  <a href="<%= new_user_session_path %>" class="btn btn-secondary btn-lg">ログイン</a>
+</div>

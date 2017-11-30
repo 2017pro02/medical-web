@@ -15,7 +15,7 @@
 #  updated_at           :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :nutrition do
     name "MyString"
     energy 1.5

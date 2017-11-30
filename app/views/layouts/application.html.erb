@@ -44,8 +44,8 @@
                 <%= link_to "ログアウト", :destroy_user_session, method: :delete, class: "dropdown-item" %>
               </div>
             </div>
-          <% else %>
-            <%= link_to "ログイン", :new_user_session, class: "btn btn-primary" %>
+          <% elsif !current_page? new_user_session_path %>
+            <%= link_to "ログイン", :new_user_session, class: "btn btn-secondary" %>
           <% end %>
         </div>
       </nav>
