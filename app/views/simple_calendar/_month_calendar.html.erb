@@ -5,7 +5,7 @@
     <% end %>
     <span class="calendar-title">
       <%= start_date.year %>
-      <span id="month"><%= start_date.month %></span>月
+      <span class="bold"><%= start_date.month %></span>月
     </span>
     <%= link_to calendar.url_for_next_view do %>
       <span class="oi oi-chevron-right" data-toggle="tooltip" data-placement="top" title="翌月"></span>
@@ -40,5 +40,5 @@
 </div>
 
 <script>
-  $("[data-toggle='tooltip']").tooltip();
+$("[data-toggle='tooltip']").tooltip();
 </script>

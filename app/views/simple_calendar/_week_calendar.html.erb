@@ -1,12 +1,21 @@
 <div class="simple-calendar">
-  <div class="calendar-heading">
-    <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-    <% if calendar.number_of_weeks == 1 %>
-      <span class="calendar-title">Week <%= calendar.week_number %></span>
-    <%else%>
-        <span class="calendar-title">Week <%= calendar.week_number %> - <%= calendar.end_week %></span>
-    <%end%>
-        <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+  <div class="calendar-heading d-flex justify-content-between align-items-center">
+    <%= link_to calendar.url_for_previous_view, id: "prev" do %>
+      <span class="oi oi-chevron-left" data-toggle="tooltip" data-placement="top" title="前週"></span>
+    <% end %>
+    <span class="calendar-title">
+      <%= start_date.year %> <%= start_date.month %>月
+      <span class="bold">
+        <% if calendar.number_of_weeks == 1 %>
+          <%= get_week_num(start_date) %>週目
+        <%else%>
+          <%= calendar.week_number %> - <%= calendar.end_week %>週目
+        <%end%>
+      </span>
+    </span>
+    <%= link_to calendar.url_for_next_view, id: "next" do %>
+      <span class="oi oi-chevron-right" data-toggle="tooltip" data-placement="top" title="翌週"></span>
+    <% end %>
   </div>
 
   <table class="table table-striped">
@@ -35,3 +44,7 @@
     </tbody>
   </table>
 </div>
+
+<script>
+$("[data-toggle='tooltip']").tooltip();
+</script>

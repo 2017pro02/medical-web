@@ -1,11 +1,37 @@
 <% breadcrumb :meals, @user %>
 
-<h1><%= @user.profile.nickname %>様の食事</h1>
+<h1><%= @user.profile.nickname %>さんの食事</h1>
 
-<%= month_calendar(events: @meals, attribute: :created_at) do |date, meals| %>
-  <% if meals.present? %>
-    <%= link_to date.strftime("%d"), URI.unescape(user_meal_path(date: show_date(date))) %>
-  <% else %>
-    <%= date.strftime("%d") %>
+<div class="text-right">
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-info" id="month">
+      <input type="radio" autocomplete="off" checked>月
+    </label>
+    <label class="btn btn-info" id="week">
+      <input type="radio" autocomplete="off">週
+    </label>
+  </div>
+</div>
+
+<div id="month-cal">
+  <%= month_calendar(events: @meals, attribute: :created_at) do |date, meals| %>
+    <% if meals.present? %>
+      <%= link_to date.strftime("%d"), URI.unescape(user_meal_path(date: show_date(date))) %>
+    <% else %>
+      <%= date.strftime("%d") %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
+<div id="week-cal" style="display:none;">
+  <%= week_calendar(events: @meals, attribute: :created_at) do |date, meals| %>
+    <%= date.strftime("%m/%d") %>
+    <%= link_to URI.unescape(user_meal_path(date: show_date(date))) do %>
+      <% meals.each do |meal| %>
+        <div>
+          <%= image_tag meal.img.url, class: "img-thumbnail" %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
