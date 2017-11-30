@@ -24,7 +24,14 @@
 </div>
 
 <div id="week-cal" style="display:none;">
-  <%= week_calendar do |date| %>
-    <%= date %>
+  <%= week_calendar(events: @meals, attribute: :created_at) do |date, meals| %>
+    <%= date.strftime("%m/%d") %>
+    <%= link_to URI.unescape(user_meal_path(date: show_date(date))) do %>
+      <% meals.each do |meal| %>
+        <div>
+          <%= image_tag meal.img.url, class: "img-thumbnail" %>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
 </div>

@@ -5,11 +5,13 @@
     <% end %>
     <span class="calendar-title">
       <%= start_date.year %>
-      <% if calendar.number_of_weeks == 1 %>
-        <%= calendar.week_number %>週目
-      <%else%>
-        <%= calendar.week_number %> - <%= calendar.end_week %>週目
-      <%end%>
+      <span class="bold">
+        <% if calendar.number_of_weeks == 1 %>
+          <%= calendar.week_number %>週目
+        <%else%>
+          <%= calendar.week_number %> - <%= calendar.end_week %>週目
+        <%end%>
+      </span>
     </span>
     <%= link_to calendar.url_for_next_view, id: "next" do %>
       <span class="oi oi-chevron-right" data-toggle="tooltip" data-placement="top" title="翌週"></span>
