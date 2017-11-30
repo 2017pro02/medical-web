@@ -35,11 +35,7 @@ class MealsController < ApplicationController
 
     respond_to do |format|
       if @meal.save
-        TvChannel.broadcast_to(current_user, { type: "meal", date: @meal.created_at, img: @meal.img })
-        @user.followers.each do |follower|
-          UserMailer.notify_new_meal(follower, current_user, @meal).deliver_later
-        end
-        GuessDishJob.perform_later @meal
+        notify(@meal)
         format.html { redirect_to user_meals_path, notice: "Meal was successfully created." }
         format.json { render :show, status: :created, location: @meal }
       else
@@ -115,5 +111,14 @@ class MealsController < ApplicationController
 
     def comment_params
       params.require(:comment).permit(:message)
+    end
+
+    def notify(meal)
+      TvChannel.broadcast_to(current_user, { type: "meal", date: meal.created_at, img: meal.img })
+      current_user.followers.each do |follower|
+        WebNotificationChannel.broadcast_to(follower, title: "#{current_user}さんが食事を撮影しました", body: "今すぐ確認してみましょう！")
+        UserMailer.notify_new_meal(follower, current_user, meal).deliver_later
+      end
+      GuessDishJob.perform_later meal
     end
 end
