@@ -4,10 +4,10 @@
       <span class="oi oi-chevron-left" data-toggle="tooltip" data-placement="top" title="前週"></span>
     <% end %>
     <span class="calendar-title">
-      <%= start_date.year %>
+      <%= start_date.year %> <%= start_date.month %>月
       <span class="bold">
         <% if calendar.number_of_weeks == 1 %>
-          <%= calendar.week_number %>週目
+          <%= get_week_num(start_date) %>週目
         <%else%>
           <%= calendar.week_number %> - <%= calendar.end_week %>週目
         <%end%>
