@@ -59,6 +59,8 @@ gem "bootstrap"
 gem "jquery-rails"
 # パンくず
 gem "gretel"
+# ページネーション
+gem "kaminari"
 # カレンダー表示
 gem "simple_calendar", "~> 2.0"
 

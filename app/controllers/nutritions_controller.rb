@@ -5,7 +5,7 @@ class NutritionsController < ApplicationController
   # GET /nutritions
   # GET /nutritions.json
   def index
-    @nutritions = Nutrition.all
+    @nutritions = Nutrition.all.page params[:page]
   end
 
   # GET /nutritions/1

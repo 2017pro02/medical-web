@@ -11,7 +11,7 @@
     <div id="comment" class="card">
       <div class="card-body">
         <template v-if="message">
-          <h4 class="card-title">{{ from }}様からメッセージです</h4>
+          <h4 class="card-title">{{ from }}さんからメッセージです</h4>
           <p class="card-text">{{ message }}</p>
         </template>
         <template v-else>
