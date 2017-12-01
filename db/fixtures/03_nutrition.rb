@@ -14,6 +14,7 @@ data.each_with_index do |nu, i|
   Nutrition.seed do |n|
     n.id = i
     n.name = nu["name"]
+    n.remote_img_url = nu["img"]
     nut = nu["nutritions"]
     n.energy = nut["エネルギー"]
     n.protein = seikika(nut["タンパク質"])
