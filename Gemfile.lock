@@ -362,6 +362,7 @@ DEPENDENCIES
   gretel
   jbuilder (~> 2.5)
   jquery-rails
+  kaminari
   letter_opener_web
   listen (>= 3.0.5, < 3.2)
   onkcop
