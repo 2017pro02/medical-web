@@ -6,7 +6,7 @@ data = open(json_path) do |io|
 end
 
 def seikika(str)
-  return if str.blank?
+  return 0 if str.blank?
   str.gsub(/[a-z]*(\s*\(.*\))?/, "").to_f
 end
 
