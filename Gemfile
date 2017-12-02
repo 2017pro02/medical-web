@@ -87,6 +87,8 @@ group :development do
   gem "letter_opener_web"
   # スキーマを分かりやすくする
   gem "annotate", require: false
+  # ER図を生成
+  gem "rails-erd"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
