@@ -1,5 +1,5 @@
 crumb :dashboard do
-  link "Dashboard", dashboard_path
+  link "ダッシュボード", dashboard_path
 end
 
 crumb :meals do |user, start_date|
