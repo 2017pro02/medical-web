@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+h2 {
+  margin-top: 50px !important;
+}
+
 #usage .card {
   @media (min-width: 768px) {
     width: 30%;
@@ -17,6 +21,10 @@
   @media (min-width: 768px) {
     transform: rotate(0deg);
   }
+}
+
+footer .row {
+  padding-top: 30px;
 }
 
 .table {
