@@ -10,12 +10,16 @@
 
     <div id="comment" class="card">
       <div class="card-body">
-        <template v-if="message">
-          <h4 class="card-title">{{ from }}さんからメッセージです</h4>
-          <p class="card-text">{{ message }}</p>
+        <h4 class="card-title">メッセージ</h4>
+        <template v-for="comment in comments">
+          <div class="message">
+            <h5>{{ comment.from }}さんからメッセージです</h5>
+            <p class="card-text">{{ comment.message }}</p>
+          </div>
+          <hr>
         </template>
-        <template v-else>
-          <h4>メッセージはありません</h4>
+        <template v-if="comments.length == 0">
+          <h4 class="card-title">メッセージはありません</h4>
         </template>
       </div>
     </div>
@@ -23,24 +27,30 @@
 </template>
 
 <script>
+var comments = []
+
 export default {
   created: function() {
     window.componentComment = this
     se_receive_message = document.getElementById("se_receive_message")
+    fetch("/tv.json", {credentials: "include"}).then(function(res) {
+      return res.json()
+    }).then(function(json) {
+      console.log(json)
+      for(let comment of json.comments) comments.unshift({from: comment.target_user.email, message: comment.message})
+    })
   },
   data: function () {
     return {
       recommend_img: "https://i.imgur.com/HS91twq.jpg",
       recommend_name: "蕎麦",
-      from: "",
-      message: ""
+      comments,
     }
   },
   methods: {
     addComment: function(from, message) {
       se_receive_message.play()
-      this.from = from
-      this.message = message
+      comments.push({from, message})
     }
   }
 }
@@ -49,6 +59,14 @@ export default {
 <style scoped>
 #sugguest, #comment {
   height: 45vh;
+}
+
+#comment .card-body {
+  overflow-y: auto;
+}
+
+#comment .message {
+  height: calc((45vh - 50px)/2)
 }
 
 img {
