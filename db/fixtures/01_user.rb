@@ -16,3 +16,12 @@ User.seed(:id, {
 end
 
 User.find_each(&:confirm)
+
+(1..10).each do |i|
+  UserProfile.seed do |p|
+    p.id = i
+    p.user_id = i
+    p.gender = ["male", "female"].sample
+    p.age = Random.rand(20..80)
+  end
+end
