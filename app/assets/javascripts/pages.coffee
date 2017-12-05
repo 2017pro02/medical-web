@@ -13,10 +13,10 @@ cron = () ->
     window.componentMeal.dayChanged()
 
 $(document).on "ready turbolinks:load", ->
-  resize()
+  if $("footer").length != 0
+    resize()
+    $(window).resize ->
+      resize()
 
   unless document.getElementById("tv") then return
   setInterval(cron, 60000)
-
-$(window).resize ->
-  resize()
