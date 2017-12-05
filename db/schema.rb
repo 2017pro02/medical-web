@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171202160308) do
+ActiveRecord::Schema.define(version: 20171205211715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,12 +57,12 @@ ActiveRecord::Schema.define(version: 20171202160308) do
   create_table "nutritions", force: :cascade do |t|
     t.string "name", null: false
     t.string "img"
-    t.float "energy"
-    t.float "protein"
-    t.float "lipid"
-    t.float "carbohydrate"
-    t.float "dietary_fiber"
-    t.float "saturated_fatty_acid"
+    t.float "energy", default: 0.0
+    t.float "protein", default: 0.0
+    t.float "lipid", default: 0.0
+    t.float "carbohydrate", default: 0.0
+    t.float "dietary_fiber", default: 0.0
+    t.float "saturated_fatty_acid", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
