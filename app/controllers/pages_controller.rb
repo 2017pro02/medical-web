@@ -27,6 +27,10 @@ class PagesController < ApplicationController
           result[n] = m.nutritions.sum { |hash| hash[n] }
         end
       end
-      result.min_by { |a| a[1] }[0].to_s
+      if result.present?
+        return result.min_by { |a| a[1] }[0].to_s
+      else
+        return 0
+      end
     end
 end
