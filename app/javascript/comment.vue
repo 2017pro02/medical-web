@@ -35,7 +35,7 @@
 
 <script>
 var se_receive_message
-var lack_nut
+var lack_nut = "炭水化物"
 var comments = []
 
 export default {
