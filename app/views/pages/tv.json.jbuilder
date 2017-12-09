@@ -15,3 +15,5 @@ json.comments do
     json.extract! comment, :id, :target_user, :message
   end
 end
+
+json.lack_nut @lack_nut

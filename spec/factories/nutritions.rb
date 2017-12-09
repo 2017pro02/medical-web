@@ -5,12 +5,12 @@
 #  id                   :integer          not null, primary key
 #  name                 :string           not null
 #  img                  :string
-#  energy               :float
-#  protein              :float
-#  lipid                :float
-#  carbohydrate         :float
-#  dietary_fiber        :float
-#  saturated_fatty_acid :float
+#  energy               :float            default(0.0)
+#  protein              :float            default(0.0)
+#  lipid                :float            default(0.0)
+#  carbohydrate         :float            default(0.0)
+#  dietary_fiber        :float            default(0.0)
+#  saturated_fatty_acid :float            default(0.0)
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #

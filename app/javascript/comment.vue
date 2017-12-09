@@ -3,8 +3,15 @@
     <div id="sugguest" class="card">
       <div class="card-body">
         <h4 class="card-title">オススメの料理</h4>
-        <img :src="recommend_img" class="img-thumbnail">
-        <p>{{ recommend_name }}を食べると良いでしょう</p>
+        <div class="row">
+          <div class="col-6">
+            <img :src="recommend_img" class="img-thumbnail">
+          </div>
+          <div class="col-6">
+            <p>{{ lack_nut }}が不足しています</p>
+            <p>{{ recommend_name }}を食べると良いでしょう</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -27,6 +34,8 @@
 </template>
 
 <script>
+var se_receive_message
+var lack_nut = "炭水化物"
 var comments = []
 
 export default {
@@ -36,7 +45,7 @@ export default {
     fetch("/tv.json", {credentials: "include"}).then(function(res) {
       return res.json()
     }).then(function(json) {
-      console.log(json)
+      lack_nut = json.lack_nut
       for(let comment of json.comments) comments.unshift({from: comment.target_user.email, message: comment.message})
     })
   },
@@ -45,6 +54,7 @@ export default {
       recommend_img: "https://i.imgur.com/HS91twq.jpg",
       recommend_name: "蕎麦",
       comments,
+      lack_nut,
     }
   },
   methods: {
@@ -58,7 +68,7 @@ export default {
 
 <style scoped>
 #sugguest, #comment {
-  height: 45vh;
+  height: 47vh;
 }
 
 #comment .card-body {
