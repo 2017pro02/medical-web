@@ -8,7 +8,7 @@
 
 <h2>使い方</h2>
 
-<div class="d-sm-block d-md-flex justify-content-around align-items-center">
+<div id="usage" class="d-sm-block d-md-flex justify-content-around align-items-center">
   <div class="card">
     <img class="card-img-top" src="https://via.placeholder.com/300x200">
     <div class="card-body">
@@ -42,7 +42,11 @@
 <h2>始める！</h2>
 <div class="alert alert-warning" role="alert">このシステムでは、食事を撮影する「ボックス」が必要となります。</div>
 <div class="text-center">
-  <a href="<%= new_user_registration_path %>" class="btn btn-primary btn-lg">新規登録</a>
-  または
-  <a href="<%= new_user_session_path %>" class="btn btn-secondary btn-lg">ログイン</a>
+  <% if user_signed_in? %>
+    <%= link_to "ログイン済み", new_user_session_path, class: "btn btn-secondary disabled", role: "button", "aria-disabled": "true" %>
+  <% else %>
+    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+    または
+    <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary btn-lg" %>
+  <% end %>
 </div>

@@ -10,6 +10,8 @@
 #  bio        :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  gender     :integer
+#  age        :integer
 #
 
 require "rails_helper"

@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
   </head>
 
   <body>
@@ -22,7 +23,7 @@
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item <%= 'active' if current_page? dashboard_path %>">
               <%= link_to dashboard_path, class: "nav-link" do %>
-                Dashboard
+                ダッシュボード
                 <%= "<span class='sr-only'>(current)</span>".html_safe if current_page? dashboard_path %>
               <% end %>
             </li>
@@ -74,5 +75,27 @@
 
       <%= yield %>
     </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h5>サイトマップ</h5>
+            <nav class="nav flex-column">
+              <%= link_to "トップ", root_path, class: "nav-link" %>
+              <%= link_to "ダッシュボード", dashboard_path, class: "nav-link" %>
+              <%= link_to "栄養素一覧", nutritions_path, class: "nav-link" %>
+            </nav>
+          </div>
+
+          <div class="col-sm-12 col-md-6">
+            <h5>運営</h5>
+            <p>公立はこだて未来大学すうぃふとプロジェクト</p>
+            <!-- Credit of docomo Developer support API --><a href='https://dev.smt.docomo.ne.jp'><img src='https://devsite-pro.s3.amazonaws.com/contents_file/credit.png' title='API powered by docomo Developer support' alt='API powered by docomo Developer support' width='100' height='27' border='0' style='margin:15px 15px 15px 15px'></a><!-- Credit of docomo Developer support API -->
+            <p class="text-muted">料理画像の認識にdocomo様のapiを使用しております。</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

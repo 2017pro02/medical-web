@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171119071746) do
+ActiveRecord::Schema.define(version: 20171205211715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 20171119071746) do
     t.index ["nutrition_id"], name: "index_dishes_on_nutrition_id"
   end
 
+  create_table "dris", force: :cascade do |t|
+    t.string "nut_type", null: false
+    t.integer "gender", null: false
+    t.int4range "age", null: false
+    t.float "val", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nut_type", "gender", "age"], name: "index_dris_on_nut_type_and_gender_and_age", unique: true
+  end
+
   create_table "meals", force: :cascade do |t|
     t.bigint "user_id"
     t.string "img"
@@ -47,12 +57,12 @@ ActiveRecord::Schema.define(version: 20171119071746) do
   create_table "nutritions", force: :cascade do |t|
     t.string "name", null: false
     t.string "img"
-    t.float "energy"
-    t.float "protein"
-    t.float "lipid"
-    t.float "carbohydrate"
-    t.float "dietary_fiber"
-    t.float "saturated_fatty_acid"
+    t.float "energy", default: 0.0
+    t.float "protein", default: 0.0
+    t.float "lipid", default: 0.0
+    t.float "carbohydrate", default: 0.0
+    t.float "dietary_fiber", default: 0.0
+    t.float "saturated_fatty_acid", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -75,6 +85,8 @@ ActiveRecord::Schema.define(version: 20171119071746) do
     t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "gender"
+    t.integer "age"
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
     t.index ["username"], name: "index_user_profiles_on_username", unique: true
   end

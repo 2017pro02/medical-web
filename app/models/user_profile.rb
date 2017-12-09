@@ -10,11 +10,14 @@
 #  bio        :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  gender     :integer
+#  age        :integer
 #
 
 class UserProfile < ApplicationRecord
   belongs_to :user
   mount_uploader :avatar, AvatarUploader
+  enum gender: { male: 0, female: 1 }
 
   before_save :set_nickname
 
