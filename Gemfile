@@ -63,6 +63,8 @@ gem "gretel"
 gem "kaminari"
 # カレンダー表示
 gem "simple_calendar", "~> 2.0"
+# 検索
+gem "ransack"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
