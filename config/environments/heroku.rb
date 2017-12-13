@@ -62,7 +62,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "foolog_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: "stormy-ocean-60686.herokuapp.com" }
+  config.action_mailer.default_url_options = { host: "foolog.herokuapp.com" }
   config.action_mailer.smtp_settings = {
     address: "smtp.sendgrid.net",
     port: "587",
